@@ -50,6 +50,6 @@ using namespace std;
 
 int main(int argc,char *argv[])
 {
-	err_quit("ww");
+	cout<<"xxxxxxxxxxx"<<endl;
 	return 0;
 }
