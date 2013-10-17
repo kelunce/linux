@@ -1,0 +1,24 @@
+/command/who.c line 18: Reserved type name unexpected. before  = clone_object("/cl
+/command/who.c line 18: parse error before  = clone_object("/cl
+/command/who.c line 18: Illegal LHS before the end of line
+/command/who.c line 18: Warning: Expression has no side effects, and the value is unused before the end of line
+/command/who.c line 19: Undefined variable 'obj' before name());
+/command/who.c line 20: Undefined function free_object before ;
+/command/who.c line 18: Reserved type name unexpected. before  = clone_object("/cl
+/command/who.c line 18: parse error before  = clone_object("/cl
+/command/who.c line 18: Illegal LHS before the end of line
+/command/who.c line 18: Warning: Expression has no side effects, and the value is unused before the end of line
+/command/who.c line 19: Undefined variable 'obj' before name());
+/command/who.c line 18: Reserved type name unexpected. before  = clone_object("/cl
+/command/who.c line 18: parse error before  = clone_object("/cl
+/command/who.c line 18: Illegal LHS before the end of line
+/command/who.c line 18: Warning: Expression has no side effects, and the value is unused before the end of line
+/command/who.c line 19: Undefined variable 'obj' before query_name());
+/command/who.c line 18: Reserved type name unexpected. before  = clone_object("/cl
+/command/who.c line 18: parse error before  = clone_object("/cl
+/command/who.c line 18: Illegal LHS before the end of line
+/command/who.c line 18: Warning: Expression has no side effects, and the value is unused before the end of line
+/command/who.c line 18: Reserved type name unexpected. before  = clone_object("/co
+/command/who.c line 18: parse error before  = clone_object("/co
+/command/who.c line 18: Illegal LHS before the end of line
+/command/who.c line 18: Warning: Expression has no side effects, and the value is unused before the end of line

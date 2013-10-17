@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "addr_server", "..\v22.2b14\addr_server.vcproj", "{F64B877F-1F5A-4737-B666-474FD19F6EAF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "edit_source", "..\v22.2b14\edit_source.vcproj", "{5AF1751E-52F1-43AE-B962-938E24AD3B25}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mudos", "..\v22.2b14\mudos.vcproj", "{4F19A359-E58B-42C8-B103-4EB8B5FB42A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F64B877F-1F5A-4737-B666-474FD19F6EAF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F64B877F-1F5A-4737-B666-474FD19F6EAF}.Debug|Win32.Build.0 = Debug|Win32
+		{F64B877F-1F5A-4737-B666-474FD19F6EAF}.Release|Win32.ActiveCfg = Release|Win32
+		{F64B877F-1F5A-4737-B666-474FD19F6EAF}.Release|Win32.Build.0 = Release|Win32
+		{5AF1751E-52F1-43AE-B962-938E24AD3B25}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5AF1751E-52F1-43AE-B962-938E24AD3B25}.Debug|Win32.Build.0 = Debug|Win32
+		{5AF1751E-52F1-43AE-B962-938E24AD3B25}.Release|Win32.ActiveCfg = Release|Win32
+		{5AF1751E-52F1-43AE-B962-938E24AD3B25}.Release|Win32.Build.0 = Release|Win32
+		{4F19A359-E58B-42C8-B103-4EB8B5FB42A0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4F19A359-E58B-42C8-B103-4EB8B5FB42A0}.Debug|Win32.Build.0 = Debug|Win32
+		{4F19A359-E58B-42C8-B103-4EB8B5FB42A0}.Release|Win32.ActiveCfg = Release|Win32
+		{4F19A359-E58B-42C8-B103-4EB8B5FB42A0}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
