@@ -27,10 +27,10 @@ address server ip : localhost
 address server port : 9997
 
 # absolute pathname of mudlib
-mudlib directory : /home/mmessier/mudos/mudos/beta/testsuite
+mudlib directory : /home/anker/linux_demon/mudos/linux_v22.2b14/testsuite
 
 # absolute pathname of driver/config dir
-binary directory : /home/mmessier/mudos/mudos/beta/testsuite
+binary directory : /home/anker/linux_demon/mudos/linux_v22.2b14/
 
 # debug.log and author/domain stats are stored here
 log directory : /log
