@@ -1,0 +1,457 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: mudos - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP51D.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "MSDOS" /D "WINNT" /Fp"WinDebug/mudos.pch" /YX /Fo"WinDebug/" /Fd"WinDebug/" /FD /c 
+"D:\Mud Server\v22.2b14\lex.c"
+"D:\Mud Server\v22.2b14\main.c"
+"D:\Mud Server\v22.2b14\rc.c"
+"D:\Mud Server\v22.2b14\interpret.c"
+"D:\Mud Server\v22.2b14\simulate.c"
+"D:\Mud Server\v22.2b14\file.c"
+"D:\Mud Server\v22.2b14\object.c"
+"D:\Mud Server\v22.2b14\backend.c"
+"D:\Mud Server\v22.2b14\array.c"
+"D:\Mud Server\v22.2b14\mapping.c"
+"D:\Mud Server\v22.2b14\ed.c"
+"D:\Mud Server\v22.2b14\comm.c"
+"D:\Mud Server\v22.2b14\regexp.c"
+"D:\Mud Server\v22.2b14\swap.c"
+"D:\Mud Server\v22.2b14\buffer.c"
+"D:\Mud Server\v22.2b14\crc32.c"
+"D:\Mud Server\v22.2b14\class.c"
+"D:\Mud Server\v22.2b14\efuns_main.c"
+"D:\Mud Server\v22.2b14\call_out.c"
+"D:\Mud Server\v22.2b14\otable.c"
+"D:\Mud Server\v22.2b14\dumpstat.c"
+"D:\Mud Server\v22.2b14\stralloc.c"
+"D:\Mud Server\v22.2b14\port.c"
+"D:\Mud Server\v22.2b14\reclaim.c"
+"D:\Mud Server\v22.2b14\parse.c"
+"D:\Mud Server\v22.2b14\simul_efun.c"
+"D:\Mud Server\v22.2b14\sprintf.c"
+"D:\Mud Server\v22.2b14\program.c"
+"D:\Mud Server\v22.2b14\compiler.c"
+"D:\Mud Server\v22.2b14\avltree.c"
+"D:\Mud Server\v22.2b14\icode.c"
+"D:\Mud Server\v22.2b14\trees.c"
+"D:\Mud Server\v22.2b14\generate.c"
+"D:\Mud Server\v22.2b14\scratchpad.c"
+"D:\Mud Server\v22.2b14\socket_efuns.c"
+"D:\Mud Server\v22.2b14\socket_ctrl.c"
+"D:\Mud Server\v22.2b14\qsort.c"
+"D:\Mud Server\v22.2b14\eoperators.c"
+"D:\Mud Server\v22.2b14\socket_err.c"
+"D:\Mud Server\v22.2b14\md.c"
+"D:\Mud Server\v22.2b14\disassembler.c"
+"D:\Mud Server\v22.2b14\binaries.c"
+"D:\Mud Server\v22.2b14\replace_program.c"
+"D:\Mud Server\v22.2b14\ccode.c"
+"D:\Mud Server\v22.2b14\cfuns.c"
+"D:\Mud Server\v22.2b14\compile_file.c"
+"D:\Mud Server\v22.2b14\packages\contrib.c"
+"D:\Mud Server\v22.2b14\packages\sockets.c"
+"D:\Mud Server\v22.2b14\packages\develop.c"
+"D:\Mud Server\v22.2b14\packages\math.c"
+"D:\Mud Server\v22.2b14\mudlib\interface.c"
+"D:\Mud Server\v22.2b14\hash.c"
+"D:\Mud Server\v22.2b14\efuns_port.c"
+"D:\Mud Server\v22.2b14\amiga\crypt.c"
+"D:\Mud Server\v22.2b14\grammar.c"
+"D:\Mud Server\v22.2b14\packages\uids.c"
+"D:\Mud Server\v22.2b14\packages\mudlib_stats.c"
+"D:\Mud Server\v22.2b14\master.c"
+"D:\Mud Server\v22.2b14\add_action.c"
+"D:\Mud Server\v22.2b14\function.c"
+"D:\Mud Server\v22.2b14\applies.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP51D.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP51E.tmp" with contents
+[
+wsock32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"WinDebug/mudos.pdb" /debug /machine:I386 /out:"WinDebug/mudos.exe" 
+".\WinDebug\lex.obj"
+".\WinDebug\main.obj"
+".\WinDebug\rc.obj"
+".\WinDebug\interpret.obj"
+".\WinDebug\simulate.obj"
+".\WinDebug\file.obj"
+".\WinDebug\object.obj"
+".\WinDebug\backend.obj"
+".\WinDebug\array.obj"
+".\WinDebug\mapping.obj"
+".\WinDebug\ed.obj"
+".\WinDebug\comm.obj"
+".\WinDebug\regexp.obj"
+".\WinDebug\swap.obj"
+".\WinDebug\buffer.obj"
+".\WinDebug\crc32.obj"
+".\WinDebug\class.obj"
+".\WinDebug\efuns_main.obj"
+".\WinDebug\call_out.obj"
+".\WinDebug\otable.obj"
+".\WinDebug\dumpstat.obj"
+".\WinDebug\stralloc.obj"
+".\WinDebug\port.obj"
+".\WinDebug\reclaim.obj"
+".\WinDebug\parse.obj"
+".\WinDebug\simul_efun.obj"
+".\WinDebug\sprintf.obj"
+".\WinDebug\program.obj"
+".\WinDebug\compiler.obj"
+".\WinDebug\avltree.obj"
+".\WinDebug\icode.obj"
+".\WinDebug\trees.obj"
+".\WinDebug\generate.obj"
+".\WinDebug\scratchpad.obj"
+".\WinDebug\socket_efuns.obj"
+".\WinDebug\socket_ctrl.obj"
+".\WinDebug\qsort.obj"
+".\WinDebug\eoperators.obj"
+".\WinDebug\socket_err.obj"
+".\WinDebug\md.obj"
+".\WinDebug\disassembler.obj"
+".\WinDebug\binaries.obj"
+".\WinDebug\replace_program.obj"
+".\WinDebug\ccode.obj"
+".\WinDebug\cfuns.obj"
+".\WinDebug\compile_file.obj"
+".\WinDebug\contrib.obj"
+".\WinDebug\sockets.obj"
+".\WinDebug\develop.obj"
+".\WinDebug\math.obj"
+".\WinDebug\interface.obj"
+".\WinDebug\hash.obj"
+".\WinDebug\efuns_port.obj"
+".\WinDebug\crypt.obj"
+".\WinDebug\grammar.obj"
+".\WinDebug\uids.obj"
+".\WinDebug\mudlib_stats.obj"
+".\WinDebug\master.obj"
+".\WinDebug\add_action.obj"
+".\WinDebug\function.obj"
+".\WinDebug\applies.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP51E.tmp"
+<h3>Output Window</h3>
+Compiling...
+lex.c
+d:\mud server\v22.2b14\lex.c(590) : warning C4018: '==' : signed/unsigned mismatch
+d:\mud server\v22.2b14\lex.c(727) : warning C4018: '==' : signed/unsigned mismatch
+d:\mud server\v22.2b14\lex.c(2769) : warning C4101: 'exp' : unreferenced local variable
+main.c
+rc.c
+d:\mud server\v22.2b14\rc.c(26) : warning C4090: '=' : different 'const' qualifiers
+d:\mud server\v22.2b14\rc.c(27) : warning C4090: '=' : different 'const' qualifiers
+interpret.c
+d:\mud server\v22.2b14\interpret.c(301) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\interpret.c(702) : warning C4018: '>=' : signed/unsigned mismatch
+d:\mud server\v22.2b14\interpret.c(770) : warning C4018: '>=' : signed/unsigned mismatch
+d:\mud server\v22.2b14\interpret.c(1954) : warning C4244: '=' : conversion from 'float ' to 'int ', possible loss of data
+d:\mud server\v22.2b14\interpret.c(2431) : warning C4244: '+=' : conversion from 'float ' to 'int ', possible loss of data
+d:\mud server\v22.2b14\interpret.c(3046) : warning C4244: '=' : conversion from 'int ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\interpret.c(3118) : warning C4018: '>' : signed/unsigned mismatch
+d:\mud server\v22.2b14\interpret.c(3133) : warning C4018: '>' : signed/unsigned mismatch
+d:\mud server\v22.2b14\interpret.c(3173) : warning C4018: '>' : signed/unsigned mismatch
+simulate.c
+d:\mud server\v22.2b14\simulate.c(943) : warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(void )'
+file.c
+d:\mud server\v22.2b14\file.c(118) : warning C4101: 'namelen' : unreferenced local variable
+object.c
+d:\mud server\v22.2b14\object.c(531) : warning C4244: '*=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\object.c(537) : warning C4244: '*=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\object.c(555) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\object.c(561) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+backend.c
+array.c
+mapping.c
+d:\mud server\v22.2b14\mapping.c(551) : warning C4018: '>' : signed/unsigned mismatch
+ed.c
+comm.c
+d:\mud server\v22.2b14\comm.c(17) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(17) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(18) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(18) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(19) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(19) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(20) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(20) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(21) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(21) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(22) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(22) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(23) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(23) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(23) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(23) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(24) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(24) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(25) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(25) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(26) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(26) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(27) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(27) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(28) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(28) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(30) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(30) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(31) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(31) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(31) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(31) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(32) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(32) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(37) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(37) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(37) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(37) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(37) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(679) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(679) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(680) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(680) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(874) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(874) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(874) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(874) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(884) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(884) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(920) : warning C4305: '=' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(931) : warning C4305: '=' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(943) : warning C4305: '=' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(950) : warning C4305: '=' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(967) : warning C4305: '=' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(974) : warning C4305: '=' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(975) : warning C4305: '=' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(983) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(983) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(983) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(983) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(983) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(993) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(993) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(993) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(993) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(993) : warning C4305: 'initializing' : truncation from 'const int ' to 'char '
+d:\mud server\v22.2b14\comm.c(2416) : warning C4018: '==' : signed/unsigned mismatch
+regexp.c
+d:\mud server\v22.2b14\regexp.c(640) : warning C4244: 'function' : conversion from 'short ' to 'char ', possible loss of data
+d:\mud server\v22.2b14\regexp.c(656) : warning C4244: 'function' : conversion from 'short ' to 'char ', possible loss of data
+d:\mud server\v22.2b14\regexp.c(703) : warning C4244: 'function' : conversion from 'short ' to 'char ', possible loss of data
+swap.c
+d:\mud server\v22.2b14\regexp.c(457) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\regexp.c(484) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\regexp.c(640) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\regexp.c(652) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\regexp.c(656) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\regexp.c(703) : warning C4761: integral size mismatch in argument; conversion supplied
+buffer.c
+d:\mud server\v22.2b14\buffer.c(99) : warning C4018: '>=' : signed/unsigned mismatch
+d:\mud server\v22.2b14\buffer.c(102) : warning C4018: '>' : signed/unsigned mismatch
+d:\mud server\v22.2b14\buffer.c(105) : warning C4018: '<' : signed/unsigned mismatch
+crc32.c
+class.c
+efuns_main.c
+d:\mud server\v22.2b14\efuns_main.c(1479) : warning C4018: '>' : signed/unsigned mismatch
+d:\mud server\v22.2b14\efuns_main.c(3228) : warning C4018: '>=' : signed/unsigned mismatch
+d:\mud server\v22.2b14\efuns_main.c(3369) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\efuns_main.c(3375) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+call_out.c
+otable.c
+dumpstat.c
+stralloc.c
+port.c
+reclaim.c
+d:\mud server\v22.2b14\reclaim.c(51) : warning C4554: '|' : check operator precedence for possible error; use parentheses to clarify precedence
+parse.c
+simul_efun.c
+sprintf.c
+d:\mud server\v22.2b14\simul_efun.c(150) : warning C4700: local variable 'j' used without having been initialized
+d:\mud server\v22.2b14\sprintf.c(613) : warning C4018: '==' : signed/unsigned mismatch
+d:\mud server\v22.2b14\sprintf.c(666) : warning C4018: '>' : signed/unsigned mismatch
+d:\mud server\v22.2b14\sprintf.c(755) : warning C4018: '!=' : signed/unsigned mismatch
+d:\mud server\v22.2b14\sprintf.c(795) : warning C4018: '!=' : signed/unsigned mismatch
+d:\mud server\v22.2b14\sprintf.c(1045) : warning C4018: '>' : signed/unsigned mismatch
+d:\mud server\v22.2b14\sprintf.c(1055) : warning C4018: '>' : signed/unsigned mismatch
+d:\mud server\v22.2b14\sprintf.c(1073) : warning C4018: '>' : signed/unsigned mismatch
+d:\mud server\v22.2b14\sprintf.c(1080) : warning C4018: '<' : signed/unsigned mismatch
+d:\mud server\v22.2b14\sprintf.c(1107) : warning C4018: '<=' : signed/unsigned mismatch
+d:\mud server\v22.2b14\sprintf.c(1110) : warning C4018: '<' : signed/unsigned mismatch
+program.c
+d:\mud server\v22.2b14\sprintf.c(1121) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\sprintf.c(1199) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\sprintf.c(623) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\sprintf.c(668) : warning C4761: integral size mismatch in argument; conversion supplied
+compiler.c
+d:\mud server\v22.2b14\compiler.c(349) : warning C4244: '=' : conversion from 'unsigned short ' to 'unsigned char ', possible loss of data
+d:\mud server\v22.2b14\compiler.c(1443) : warning C4244: '=' : conversion from 'long ' to 'unsigned char ', possible loss of data
+d:\mud server\v22.2b14\compiler.c(1519) : warning C4244: '=' : conversion from 'long ' to 'unsigned char ', possible loss of data
+d:\mud server\v22.2b14\compiler.c(1643) : warning C4018: '<' : signed/unsigned mismatch
+d:\mud server\v22.2b14\compiler.c(1676) : warning C4244: '=' : conversion from 'int ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\compiler.c(1698) : warning C4244: '=' : conversion from 'float ' to 'int ', possible loss of data
+d:\mud server\v22.2b14\compiler.c(1923) : warning C4244: '=' : conversion from 'short ' to 'unsigned char ', possible loss of data
+d:\mud server\v22.2b14\compiler.c(2378) : warning C4018: '<' : signed/unsigned mismatch
+d:\mud server\v22.2b14\compiler.c(2465) : warning C4018: '<' : signed/unsigned mismatch
+d:\mud server\v22.2b14\compiler.c(2471) : warning C4018: '<' : signed/unsigned mismatch
+avltree.c
+d:\mud server\v22.2b14\avltree.c(62) : warning C4028: formal parameter 2 different from declaration
+d:\mud server\v22.2b14\avltree.c(107) : warning C4028: formal parameter 4 different from declaration
+d:\mud server\v22.2b14\avltree.c(107) : warning C4028: formal parameter 5 different from declaration
+d:\mud server\v22.2b14\avltree.c(257) : warning C4028: formal parameter 2 different from declaration
+d:\mud server\v22.2b14\avltree.c(257) : warning C4028: formal parameter 4 different from declaration
+d:\mud server\v22.2b14\avltree.c(304) : warning C4028: formal parameter 4 different from declaration
+d:\mud server\v22.2b14\avltree.c(429) : warning C4028: formal parameter 2 different from declaration
+d:\mud server\v22.2b14\avltree.c(446) : warning C4028: formal parameter 2 different from declaration
+icode.c
+d:\mud server\v22.2b14\icode.c(367) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(377) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(390) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(391) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(395) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(396) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(400) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(421) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(424) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(437) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(440) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(455) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(456) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(457) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(458) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(466) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(467) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(468) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(473) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(474) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(496) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(502) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(537) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(538) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(540) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(689) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(693) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(705) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(731) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(732) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(749) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(753) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(756) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(758) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(141) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(169) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(224) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(227) : warning C4761: integral strees.c
+ize mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(213) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(256) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(309) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(331) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(191) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(194) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(197) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(200) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(792) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(793) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(854) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(861) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\icode.c(911) : warning C4761: integral size mismatch in argument; conversion supplied
+generate.c
+scratchpad.c
+socket_efuns.c
+socket_ctrl.c
+qsort.c
+d:\mud server\v22.2b14\qsort.c(37) : warning C4028: formal parameter 6 different from declaration
+d:\mud server\v22.2b14\qsort.c(60) : warning C4028: formal parameter 4 different from declaration
+eoperators.c
+d:\mud server\v22.2b14\eoperators.c(84) : warning C4244: '/=' : conversion from 'float ' to 'int ', possible loss of data
+d:\mud server\v22.2b14\eoperators.c(84) : warning C4244: '=' : conversion from 'int ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\eoperators.c(434) : warning C4244: '*=' : conversion from 'float ' to 'int ', possible loss of data
+d:\mud server\v22.2b14\eoperators.c(434) : warning C4244: '=' : conversion from 'int ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\eoperators.c(879) : warning C4244: '-=' : conversion from 'float ' to 'int ', possible loss of data
+d:\mud server\v22.2b14\eoperators.c(879) : warning C4244: '=' : conversion from 'int ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\eoperators.c(1022) : warning C4018: '<' : signed/unsigned mismatch
+d:\mud server\v22.2b14\eoperators.c(1053) : warning C4308: negative integral constant converted to unsigned type
+d:\mud server\v22.2b14\eoperators.c(1053) : warning C4308: negative integral constant converted to unsigned type
+d:\mud server\v22.2b14\eoperators.c(1118) : warning C4308: negative integral constant converted to unsigned type
+d:\mud server\v22.2b14\eoperators.c(1118) : warning C4308: negative integral constant converted to unsigned type
+socket_err.c
+d:\mud server\v22.2b14\eoperators.c(1219) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\eoperators.c(1231) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\eoperators.c(1231) : warning C4761: integral size mismatch in argument; conversion supplied
+md.c
+disassembler.c
+binaries.c
+d:\mud server\v22.2b14\binaries.c(617) : warning C4013: 'quickSort' undefined; assuming extern returning int
+replace_program.c
+ccode.c
+cfuns.c
+d:\mud server\v22.2b14\ccode.c(278) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\ccode.c(281) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\ccode.c(597) : warning C4761: integral size mismatch in argument; conversion supplied
+d:\mud server\v22.2b14\cfuns.c(413) : warning C4244: '=' : conversion from 'int ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\cfuns.c(478) : warning C4018: '>' : signed/unsigned mismatch
+d:\mud server\v22.2b14\cfuns.c(492) : warning C4018: '>' : signed/unsigned mismatch
+d:\mud server\v22.2b14\cfuns.c(539) : warning C4018: '>' : signed/unsigned mismatch
+d:\mud server\v22.2b14\cfuns.c(724) : warning C4244: '+=' : conversion from 'float ' to 'int ', possible loss of data
+compile_file.c
+d:\mud server\v22.2b14\cfuns.c(1542) : warning C4700: local variable 'ref' used without having been initialized
+contrib.c
+d:\mud server\v22.2b14\packages\contrib.c(241) : warning C4113: 'int (__cdecl *)()' differs in parameter lists from 'int (__cdecl *)(struct mapping_s *,struct mapping_node_s *,void *)'
+sockets.c
+develop.c
+math.c
+d:\mud server\v22.2b14\packages\math.c(19) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\packages\math.c(27) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\packages\math.c(37) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\packages\math.c(52) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\packages\math.c(67) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\packages\math.c(75) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\packages\math.c(87) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\packages\math.c(99) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\packages\math.c(111) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\packages\math.c(119) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\packages\math.c(128) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\packages\math.c(136) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+d:\mud server\v22.2b14\packages\math.c(144) : warning C4244: '=' : conversion from 'double ' to 'float ', possible loss of data
+interface.c
+hash.c
+efuns_port.c
+d:\mud server\v22.2b14\efuns_port.c(47) : warning C4013: 'crypt' undefined; assuming extern returning int
+d:\mud server\v22.2b14\efuns_port.c(47) : warning C4047: 'function' : 'char *' differs in levels of indirection from 'int '
+d:\mud server\v22.2b14\efuns_port.c(47) : warning C4024: 'int_string_copy' : different types for formal and actual parameter 1
+d:\mud server\v22.2b14\efuns_port.c(72) : warning C4047: 'function' : 'char *' differs in levels of indirection from 'int '
+d:\mud server\v22.2b14\efuns_port.c(72) : warning C4024: 'int_string_copy' : different types for formal and actual parameter 1
+crypt.c
+grammar.c
+grammar.y(17) : warning C4005: 'MSDOS' : macro redefinition
+        unknown(0) : see previous definition of 'MSDOS'
+grammar.y.pre(2653) : warning C4244: '=' : conversion from 'unsigned short ' to 'unsigned char ', possible loss of data
+grammar.y.pre(3464) : warning C4244: '=' : conversion from 'unsigned short ' to 'unsigned char ', possible loss of data
+uids.c
+grammar.y.pre(1925) : warning C4761: integral size mismatch in argument; conversion supplied
+grammar.y.pre(1925) : warning C4761: integral size mismatch in argument; conversion supplied
+grammar.y.pre(1927) : warning C4761: integral size mismatch in argument; conversion supplied
+grammar.y.pre(1927) : warning C4761: integral size mismatch in argument; conversion supplied
+mudlib_stats.c
+master.c
+add_action.c
+d:\mud server\v22.2b14\add_action.c(67) : warning C4013: 'whashstr' undefined; assuming extern returning int
+function.c
+d:\mud server\v22.2b14\function.c(201) : warning C4244: '=' : conversion from 'short ' to 'unsigned char ', possible loss of data
+d:\mud server\v22.2b14\function.c(202) : warning C4244: '=' : conversion from 'short ' to 'unsigned char ', possible loss of data
+applies.c
+Linking...
+
+
+
+<h3>Results</h3>
+mudos.exe - 0 error(s), 244 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: edit_source - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP391.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "WIN95" /D "EDIT_SOURCE" /D "DEBUG" /Fp"WinDebug/edit_source.pch" /YX /Fo"WinDebug/" /Fd"WinDebug/" /FD /c 
+"D:\Mud Server\v22.2b14\edit_source.c"
+"D:\Mud Server\v22.2b14\hash.c"
+"D:\Mud Server\v22.2b14\make_func.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP391.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP392.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"WinDebug/edit_source.pdb" /debug /machine:I386 /out:"WinDebug/edit_source.exe" 
+".\WinDebug\edit_source.obj"
+".\WinDebug\hash.obj"
+".\WinDebug\make_func.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP392.tmp"
+<h3>Output Window</h3>
+Compiling...
+edit_source.c
+d:\mud server\v22.2b14\edit_source.c(3) : warning C4005: 'EDIT_SOURCE' : macro redefinition
+        unknown(0) : see previous definition of 'EDIT_SOURCE'
+hash.c
+d:\mud server\v22.2b14\hash.c(5) : warning C4005: 'EDIT_SOURCE' : macro redefinition
+        unknown(0) : see previous definition of 'EDIT_SOURCE'
+make_func.c
+111.c(2) : warning C4005: 'EDIT_SOURCE' : macro redefinition
+        unknown(0) : see previous definition of 'EDIT_SOURCE'
+111.c(318) : warning C4018: '>' : signed/unsigned mismatch
+Linking...
+
+
+
+<h3>Results</h3>
+edit_source.exe - 0 error(s), 4 warning(s)
+</pre>
+</body>
+</html>

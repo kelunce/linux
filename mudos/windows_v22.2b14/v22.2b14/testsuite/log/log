@@ -1,0 +1,41 @@
+Error: *Error in loading object '/command/who'
+
+Current object: /command/update
+Current program: /command/update.c
+File: "/command/update.c" Line: 20
+"Line: 139  File: "/clone/user.c" Object: /clone/user#5 Program: "/clone/user.c"
+Line: 20  File: "/command/update.c" Object: /command/update Program: "/command/update.c""
+Error: *Error in loading object '/command/who'
+
+Current object: /command/update
+Current program: /command/update.c
+File: "/command/update.c" Line: 20
+"Line: 139  File: "/clone/user.c" Object: /clone/user#5 Program: "/clone/user.c"
+Line: 20  File: "/command/update.c" Object: /command/update Program: "/command/update.c""
+Error: *Error in loading object '/command/who'
+
+Current object: /command/update
+Current program: /command/update.c
+File: "/command/update.c" Line: 20
+"Line: 139  File: "/clone/user.c" Object: /clone/user#5 Program: "/clone/user.c"
+Line: 20  File: "/command/update.c" Object: /command/update Program: "/command/update.c""
+Error: *Error in loading object '/command/who'
+
+Current object: /command/update
+Current program: /command/update.c
+File: "/command/update.c" Line: 20
+"Line: 139  File: "/clone/user.c" Object: /clone/user#5 Program: "/clone/user.c"
+Line: 20  File: "/command/update.c" Object: /command/update Program: "/command/update.c""
+Error: *Error in loading object '/command/who'
+
+Current object: /command/update
+Current program: /command/update.c
+File: "/command/update.c" Line: 20
+"Line: 139  File: "/clone/user.c" Object: /clone/user#5 Program: "/clone/user.c"
+Line: 20  File: "/command/update.c" Object: /command/update Program: "/command/update.c""
+Error: *foo
+
+Current object: /single/master
+Current program: /single/master.c
+File: "/single/master.c" Line: 66
+"Line: 66  File: "/single/master.c" Object: /single/master Program: "/single/master.c""
