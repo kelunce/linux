@@ -53,17 +53,29 @@ read write
  * test_thread_print_ids()
  * */
 
+#include "../include/single.h"
+/*
+ * 测试单例运行进程 13-2
+ * */
 #include<iostream>
+
 using namespace std;
 
 
 
 int main(int argc,char *argv[])
 {
-	test_thread_print_ids();
-	return 0;
+    if(already_running())
+    {
+        printf("process already exist/n");
+        return 1;
+    }
+    while(1)
+    {
+        printf("olny me !/n");
+        sleep(5);
+    }
+    return 0;
 }
-
-
 
 
