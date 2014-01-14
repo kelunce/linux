@@ -22,7 +22,7 @@ lockfile(int fd)
     return(fcntl(fd, F_SETLK, &fl));
 }
 
-
+// 本进程是否已经运行了
 int
 already_running(void)
 {
@@ -42,8 +42,18 @@ already_running(void)
 		syslog(LOG_ERR, "can't lock %s: %s", LOCKFILE, strerror(errno));
 		exit(1);
 	}
+    // 清空文件
 	ftruncate(fd, 0);
 	sprintf(buf, "%ld", (long)getpid());
 	write(fd, buf, strlen(buf)+1);
 	return(0);
 }
+
+/*
+   if(already_running())
+   {
+   printf("process already exist/n");
+   return 1;
+   }
+
+ * */

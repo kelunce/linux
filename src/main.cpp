@@ -53,7 +53,7 @@ read write
  * test_thread_print_ids()
  * */
 
-#include "../include/single.h"
+#include "../include/13_2.h"
 /*
  * 测试单例运行进程 13-2
  * */
@@ -65,16 +65,7 @@ using namespace std;
 
 int main(int argc,char *argv[])
 {
-    if(already_running())
-    {
-        printf("process already exist/n");
-        return 1;
-    }
-    while(1)
-    {
-        printf("olny me !/n");
-        sleep(5);
-    }
+    syslog(LOG_NOTICE, "can't open %s: %s", LOCKFILE, "lcm testing ");
     return 0;
 }
 
