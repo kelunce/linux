@@ -64,6 +64,11 @@ read write
  *_13_4_main : 测试守护进程通过非线程处理挂起信号重新加载配置
  * */
 
+/*
+ * 非阻塞write 14-1
+ * */
+#include "../include/14_1.h"
+
 
 #include<iostream>
 
@@ -73,7 +78,7 @@ using namespace std;
 
 int main(int argc,char *argv[])
 {
-    _13_4_main(argc,argv);
+    _14_1_main(argc, argv);
     return 0;
 }
 
