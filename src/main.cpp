@@ -52,11 +52,19 @@ read write
 /*
  * test_thread_print_ids()
  * */
-
+#include "../include/13_1.h"
 #include "../include/13_2.h"
 /*
  * 测试单例运行进程 13-2
  * */
+#include "../include/13_3.h"
+#include "../include/13_4.h"
+/*
+ *_13_3_main : 测试守护进程通过线程处理挂起信号重新加载配置
+ *_13_4_main : 测试守护进程通过非线程处理挂起信号重新加载配置
+ * */
+
+
 #include<iostream>
 
 using namespace std;
@@ -65,7 +73,7 @@ using namespace std;
 
 int main(int argc,char *argv[])
 {
-    syslog(LOG_NOTICE, "can't open %s: %s", LOCKFILE, "lcm testing ");
+    _13_4_main(argc,argv);
     return 0;
 }
 
