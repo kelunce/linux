@@ -1,0 +1,39 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific aliases and functions
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64:/usr/local/lib
+
+alias egrep='egrep --color=auto -n'
+
+alias fgrep='fgrep --color=auto'
+
+alias grep='grep --color=auto'
+
+alias fc='find . -name "*.c" -o -name "*.h" | xargs egrep --color=auto -n'
+
+alias ff='find ./ -name "*" |  grep -i '
+
+alias md5='python ~/soft/MD5.py '
+
+alias wd='sh ~/soft/watch_disk.sh'
+
+#不要搜索.svn目录和tags文件
+export GREP_OPTIONS="--exclude-dir=\.svn --exclude=tags --exclude=cscope.* --exclude=core.* --exclude=*.o --exclude=*.a --exclude=*.b  --binary-files=without-match"
+#git用vim输入提交日志
+export GIT_EDITOR=vim
+#生成core文件
+ulimit -c unlimited
+
+#
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    export TERM='xterm-256color'
+else
+    export TERM='xterm-color'
+fi
+

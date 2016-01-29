@@ -1,0 +1,346 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" 一般设定 set变量是设置现有变量的值，let是定义变量
+" vimtutor可以查看入门
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" " 设定默认解码 
+set encoding=utf-8
+set fenc=utf-8 
+set fencs=utf-8,usc-bom,gbk,gb2312,cp936 
+"
+" " 不要使用vi的键盘模式，而是vim自己的 
+set nocompatible 
+"
+"   设置折叠 
+set foldenable              " 开始折叠
+set foldmethod=syntax       " 设置语法折叠
+set foldcolumn=0            " 设置折叠区域的宽度
+setlocal foldlevel=1        " 设置折叠层数为
+set foldlevelstart=99       " 打开文件是默认不折叠代码
+"set foldclose=all          " 设置为自动关闭折叠                
+"nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+"                            " 用空格键来开关折叠
+"
+"
+"   设置行号
+set nu
+"
+" " history文件中需要记录的行数 
+set history=100 
+"
+" " 在处理未保存或只读文件的时候，弹出确认 
+set confirm 
+"
+" " 与windows共享剪贴板 
+set clipboard+=unnamed 
+"
+" " 侦测文件类型 
+filetype on 
+"
+" " 载入文件类型插件 
+filetype plugin on 
+"
+" " 为特定文件类型载入相关缩进文件 
+filetype indent on 
+"
+" " 保存全局变量 
+set viminfo+=! 
+"
+" " 带有如下符号的单词不要被换行分割 
+" set iskeyword+=_,$,@,%,#,- 
+"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" 文件设置 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" " 不要备份文件（根据自己需要取舍） 
+set nobackup 
+"
+" " 不要生成swap文件，当buffer被丢弃的时候隐藏它 
+setlocal noswapfile
+set noswapfile
+" set bufhidden=hide 
+"
+" " 字符间插入的像素行数目 
+" set linespace=0 
+"
+" " 增强模式中的命令行自动完成操作 
+set wildmenu 
+"
+" " 在状态行上显示光标所在位置的行号和列号 
+set ruler 
+set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%) 
+"
+" " 命令行（在状态行下）的高度，默认为1，这里是2 
+set cmdheight=1 
+"
+" " 使回格键（backspace）正常处理indent, eol, start等 
+set backspace=2 
+"
+" " 允许backspace和光标键跨越行边界 
+" set whichwrap+=<,>,h,l 
+"
+" " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位） 
+set mouse=a 
+" set selection=exclusive
+" 在选择模式下会因为输入y而导致替换，不要了
+"set selectmode=mouse,key
+"
+" " 启动的时候不显示那个援助索马里儿童的提示 
+" set shortmess=atI 
+"
+" " 通过使用: commands命令，告诉我们文件的哪一行被改变过 
+set report=0 
+"
+" " 不让vim发出讨厌的滴滴声 
+" set noerrorbells 
+"
+" " 在被分割的窗口间显示空白，便于阅读 
+" set fillchars=vert:\ ,stl:\ ,stlnc:\ 
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" " 搜索和匹配 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" " 高亮显示匹配的括号 
+set showmatch 
+"
+" " 匹配括号高亮的时间（单位是十分之一秒） 
+set matchtime=20 
+"
+" " 在搜索的时候忽略大小写 
+" set ignorecase 
+"
+" " 不要高亮被搜索的句子（phrases） 
+" set nohlsearch 
+"
+" " 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索） 
+set incsearch 
+
+" " 光标移动到buffer的顶部和底部时保持3行距离 
+"set scrolloff=3
+" 一次滚动9行CTRL+U and CTRL+D
+set scroll=9
+"
+" " 不要闪烁 
+set novisualbell 
+"
+" " 我的状态行显示的内容（包括文件类型和解码） 
+set statusline=%F%m%r%h%w\[POS=%l,%v][%p%%]\%{strftime(\"%d/%m/%y\ -\%H:%M\")} 
+"
+" " 总是显示状态行 
+set laststatus=2 
+"
+ """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" " 文本格式和排版 
+ """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" " 自动格式化 
+set formatoptions=tcrqn 
+"
+" " 继承前一行的缩进方式，特别适用于多行注释 
+set autoindent 
+"
+" " 为C程序提供自动缩进 
+set smartindent 
+"
+" " 使用C样式的缩进 
+set cindent 
+"
+" " 制表符为4 
+set tabstop=4 
+"
+" " 统一缩进为4 
+set softtabstop=4 
+set shiftwidth=4 
+"
+" " 要用空格代替制表符,如果确实需要，在insert模式下Ctrl+v后tab可以加入真的tab 
+set expandtab 
+"
+" " 不要换行 
+" set nowrap 
+"
+" " 在行和段开始处使用制表符 
+set smarttab 
+"如果打开python，打开显示tab，space符,不要使用空格代替tab
+"au FileType python set list|set noexpandtab
+"set list 
+"set listchars=tab:>-,trail:.,extends:>,precedes:<,eol:$ 
+"set listchars=tab:>-,trail:.
+"
+" " 语法高亮 
+syntax on 
+"
+" 使用256色
+set t_Co=256
+" 使用颜色方案
+colorscheme darkburn 
+set term=screen-256color
+" 防止screen中不能使用鼠标拖动
+set ttymouse=xterm2
+" 粘贴格式
+"set paste
+"
+ """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" " CTags的设定 
+ """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"在普通模式下F9都打开Tlist
+nmap <F9> :Tlist<CR>
+"在插入模式下先ESC返回普通模式F9再i返回插入模式
+imap <F9> <Esc><F9>i
+" " 按照名称排序name ,可以按照声明顺序order
+let Tlist_Sort_Type = "name" 
+"
+" " 在右侧显示窗口 
+let Tlist_Use_Right_Window = 1 
+"
+" " 压缩方式 
+let Tlist_Compart_Format = 1 
+"
+" " 如果只有一个buffer，kill窗口也kill掉buffer 
+let Tlist_Exist_OnlyWindow = 1 
+"
+" " 不要关闭其他文件的tags 
+let Tlist_File_Fold_Auto_Close = 1 
+"
+" " 不要显示折叠树 
+" let Tlist_Enable_Fold_Column = 0 
+" " 显示函数原型，因为Mudos的函数名称中有宏
+"let Tlist_Display_Prototype = 1
+"
+"   设置tags使用ctags -R后生成的tags文件目录
+set tags=tags
+set tags+=.tags/tags
+nmap <C-F12> :set tags=tags<CR>
+"set autochdir 
+"
+if filereadable("~/.vim/plugin/autotag.vim")
+    source ~/.vim/plugin/autotag.vim
+endif
+"
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+    autocmd BufWritePost *.c :TlistUpdate
+    autocmd BufWritePost *.cpp :TlistUpdate
+    augroup redhat
+        autocmd!
+        " In text files, always limit the width of text to 78 characters
+        autocmd BufRead *.txt set tw=78
+        " When editing a file, always jump to the last cursor position
+        autocmd BufReadPost *
+                    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+                    \   exe "normal! g'\"" |
+                    \ endif
+        " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
+        autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
+        " start with spec file template
+        autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
+    augroup END
+endif
+
+
+if has("cscope") && filereadable("/usr/bin/cscope")
+   " CTRL + \  s查找 
+   nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>f :cs find f <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>i :cs find i <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+   set csprg=/usr/bin/cscope
+   set csto=0
+   set cst
+   set nocsverb
+   " add any database in current directory
+   if filereadable("cscope.out")
+      cs add cscope.out
+   " else add database pointed to by environment
+   elseif filereadable("./.tags/cscope.out")
+       cs add ./.tags/cscope.out 
+   elseif $CSCOPE_DB != ""
+      cs add $CSCOPE_DB
+   endif
+   set csverb
+endif
+
+
+"--omnicppcomplete setting --
+"按下F3自动补全代码，注意该映射语句后不能有其他字符，包括tab；否则按下F3会自动补全一些乱码
+"imap <F3> <C-X><C-O>
+" 按下F2根据头文件内关键字补全
+"imap <F2> <C-X><C-I>
+set completeopt=menu,longest
+let OmniCpp_MayCompleteDot=1   "autocomplete with .
+let OmniCpp_MayCompleteArrow=1 "autocomplete with ->
+let OmniCpp_MayCompleteScope=1 "autocomplete with ::
+let OmniCpp_SelectFirstItem=2  "select first item (but don't insert)
+let OmniCpp_NamespaceSearch=2  "search namespace in this and includeed files
+let OmniCpp_ShowPrototypeInAbbr=1 "show function prototype in popup window
+let OmniCpp_GlobalScopeSearch=1
+let OmniCpp_DisplayMode=1
+let OmniCpp_DefaultNamespaces=["std"]
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"键盘命令
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 在插入状态下移动光标
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+inoremap <C-s> :w<CR>
+" 使用Ctrl + f 启动vimgrep,查找c和h文件
+nmap <C-f> :vimgrep /searchword/g **/*.[ch]
+" 普通状态下,这里未定义leader键,默认是\
+"nmap <leader>w :w!<cr>
+"nmap <leader>f :find<cr>
+
+" 映射全选+复制 ctrl+a
+"map <C-A> ggVGY
+"map! <C-A> <Esc>ggVGY
+"map <F12> gg=G
+" 选中状态下 Ctrl+c 复制
+"vmap <C-c> "+y
+"去空行  
+"nnoremap <F2> :g/^\s*$/d<CR> 
+"比较文件  
+"nnoremap <C-F2> :vert diffsplit 
+"新建标签  
+"map <M-F2> :tabnew<CR>  
+"列出当前目录文件  
+"map <F3> :tabnew .<CR>  
+"打开树状文件目录  
+"map <C-F3> \be  
+"C，C++ 按F5编译运行
+map <F6> :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+    exec "w"
+    if &filetype == 'c'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "! ./%<"
+    elseif &filetype == 'java' 
+        exec "!javac %" 
+        exec "!java %<"
+    elseif &filetype == 'py'
+        exec "!python %<"
+    elseif &filetype == 'sh'
+        exec "!sh ./%<"
+    endif
+endfunc
+"C,C++的调试
+map <F8> :call Rungdb()<CR>
+func! Rungdb()
+"    exec "w"
+"    exec "!g++ % -g -o %<"
+"    exec "!gdb ./%<"
+     exec "!make build"
+endfunc
+"
+"
+"
+"
+
+

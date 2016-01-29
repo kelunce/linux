@@ -1,0 +1,38 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+# User specific environment and startup programs
+# 启动screen
+# screen -d -R -h 200
+# 改用tmux
+#tmux
+
+#! /bin/sh -
+git config --global alias.st 'status'
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.last 'cat-file commit HEAD'
+git config --global alias.unstage 'reset HEAD -- '
+git config --global alias.discard 'checkout -- '
+git config --global diff.tool vimdiff
+git config --global merge.tool vimdiff
+git config --global difftool.prompt false
+git config --global mergetool.prompt false
+git config --global alias.di difftool
+git config --global alias.mt mergetool
+
+PATH=$PATH:$HOME/soft/bin
+export PATH
+#系统
+#export  PS1='\[\e[32m\][\u@\h \w]$\[\e[m\]'
+#export PS1='[$(whoami)@$(hostname):$(pwd)]\n>'
+#定制命令提示行
+#export  PS1='[$(whoami)@$(ifconfig eth0 | grep "inet\b"|cut -d ":" -f 2|cut -d " " -f 1):$(pwd)]\n>'
+export  PS1='\[\033[38;5;11m\][$(ifconfig eth0 | grep "inet\b"|cut -d ":" -f 2|cut -d " " -f 1)@$(pwd)]\n\[\e[m\]\[\033[38;5;2m\]$\[\e[m\]'
