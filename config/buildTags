@@ -1,0 +1,11 @@
+#!/bin/sh
+#自动生成本目录下面的ctag和cscope信息表
+rm -fr .tags
+mkdir .tags
+ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -o ./.tags/tags
+find . -name "*.h" -o -name "*.c" -o -name "*.cpp" > ./.tags/cscope.files
+cscope -bkq -i ./.tags/cscope.files
+mv cscope.in.out  ./.tags/
+mv cscope.out ./.tags/
+mv cscope.po.out ./.tags/
+#export CSCOPE_DB=${PWD}/.tags/cscope.out
