@@ -206,8 +206,7 @@ let Tlist_File_Fold_Auto_Close = 1
 "let Tlist_Display_Prototype = 1
 "
 "   设置tags使用ctags -R后生成的tags文件目录
-set tags=tags
-set tags+=.tags/tags
+set tags=.tags/tags
 nmap <C-F12> :set tags=tags<CR>
 "set autochdir 
 "

@@ -2,9 +2,13 @@
 #自动生成本目录下面的ctag和cscope信息表
 rm -fr .tags
 mkdir .tags
-ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -o ./.tags/tags
-find . -name "*.h" -o -name "*.c" -o -name "*.cpp" > ./.tags/cscope.files
-cscope -bkq -i ./.tags/cscope.files
+# 切换目录,ctags定位时使用当前位置
+# 所以把执行ctags的目录和ctags存放目录一致
+cd .tags
+ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -o ./tags ../
+cd ..
+find . -name "*.h" -o -name "*.c" -o -name "*.cpp" > ./.tags/parse_files
+cscope -bkq -i ./.tags/parse.files
 mv cscope.in.out  ./.tags/
 mv cscope.out ./.tags/
 mv cscope.po.out ./.tags/
