@@ -24,7 +24,7 @@ alias md5='python ~/soft/MD5.py '
 alias wd='sh ~/soft/watch_disk.sh'
 
 #不要搜索.svn目录和tags文件
-export GREP_OPTIONS="--exclude-dir=\.svn --exclude=tags --exclude=cscope.* --exclude=core.* --exclude=*.o --exclude=*.a --exclude=*.b  --binary-files=without-match"
+export GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.tags --exclude=core.* --exclude=*.o --exclude=*.a --exclude=*.b  --binary-files=without-match"
 #git用vim输入提交日志
 export GIT_EDITOR=vim
 #生成core文件

@@ -207,7 +207,6 @@ let Tlist_File_Fold_Auto_Close = 1
 "
 "   设置tags使用ctags -R后生成的tags文件目录
 set tags=.tags/tags
-nmap <C-F12> :set tags=tags<CR>
 "set autochdir 
 "
 if filereadable("~/.vim/plugin/autotag.vim")
@@ -293,6 +292,11 @@ nmap <C-f> :vimgrep /searchword/g **/*.[ch]
 " 普通状态下,这里未定义leader键,默认是\
 "nmap <leader>w :w!<cr>
 "nmap <leader>f :find<cr>
+func! BuildAndUpdateTags()
+    exec "!buildTags"
+    exec "cs reset"
+endfunc
+map <C-c> :call BuildAndUpdateTags()<CR>
 
 " 映射全选+复制 ctrl+a
 "map <C-A> ggVGY
