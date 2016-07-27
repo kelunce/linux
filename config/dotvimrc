@@ -22,7 +22,7 @@ set foldlevelstart=99       " 打开文件是默认不折叠代码
 "
 "
 "   设置行号
-set nu
+" set nu
 "
 " " history文件中需要记录的行数 
 set history=100 
@@ -124,7 +124,9 @@ set scroll=9
 set novisualbell 
 "
 " " 我的状态行显示的内容（包括文件类型和解码） 
-set statusline=%F%m%r%h%w\[POS=%l,%v][%p%%]\%{strftime(\"%d/%m/%y\ -\%H:%M\")} 
+let Tlist_Process_File_Always = 1
+set statusline=%F%m%r%h%w\[POS=%l,%v][%p%%]\%{Tlist_Get_Tagname_By_Line()}
+" set statusline=%F%m%r%h%w\[POS=%l,%v][%p%%]\%{strftime(\"%d/%m/%y\ -\%H:%M\")} 
 "
 " " 总是显示状态行 
 set laststatus=2 
@@ -209,6 +211,7 @@ let Tlist_File_Fold_Auto_Close = 1
 set tags=.tags/tags
 "set autochdir 
 "
+
 if filereadable("~/.vim/plugin/autotag.vim")
     source ~/.vim/plugin/autotag.vim
 endif
@@ -295,6 +298,7 @@ nmap <C-f> :vimgrep /searchword/g **/*.[ch]
 func! BuildAndUpdateTags()
     exec "!buildTags"
     exec "cs reset"
+    exec "cs add ./.tags/cscope.out"
 endfunc
 map <C-c> :call BuildAndUpdateTags()<CR>
 
