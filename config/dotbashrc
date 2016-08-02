@@ -23,6 +23,12 @@ alias md5='python ~/soft/MD5.py '
 
 alias wd='sh ~/soft/watch_disk.sh'
 
+make()
+{
+    /usr/bin/make "$@" 2>&1 | grep -E --color=always '\berror:|\bwarning:|$'
+}
+
+
 #不要搜索.svn目录和tags文件
 export GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.tags --exclude=core.* --exclude=*.o --exclude=*.a --exclude=*.b  --binary-files=without-match"
 #git用vim输入提交日志
@@ -30,6 +36,25 @@ export GIT_EDITOR=vim
 #生成core文件
 ulimit -c unlimited
 
+#! /bin/sh -
+#git config --global alias.st 'status'
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.new 'ls-files --others --exclude-standard' 
+git config --global alias.st 'status -uno'
+git config --global alias.last 'cat-file commit HEAD'
+git config --global alias.unstage 'reset HEAD '
+git config --global alias.discard 'checkout -- '
+git config --global diff.tool vimdiff
+git config --global merge.tool vimdiff
+git config --global difftool.prompt false
+git config --global mergetool.prompt false
+git config --global alias.di difftool
+git config --global alias.mt mergetool
+git config --global alias.gr '!git fetch && git pull --rebase origin '
+git config --global alias.pr '!git push origin '
+source /etc/bash_completion.d/git
 #
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
     export TERM='xterm-256color'
