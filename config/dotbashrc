@@ -28,9 +28,23 @@ make()
     /usr/bin/make "$@" 2>&1 | grep -E --color=always '\berror:|\bwarning:|$'
 }
 
+vlog()
+{
+    if [ $# -eq 0 ]
+    then
+        find . -name *.log |xargs echo |xargs tail -f
+    else
+        find . -name "*$1*".log |xargs echo |xargs tail -f
+    fi
+}
+
+ve()
+{
+    find . -name *.log |xargs echo |xargs tail -f | grep error -i
+}
 
 #不要搜索.svn目录和tags文件
-export GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.tags --exclude=core.* --exclude=*.o --exclude=*.a --exclude=*.b  --binary-files=without-match"
+export GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.tags --exclude-dir=\.git --exclude=core.* --exclude=*.o --exclude=*.a --exclude=*.b  --binary-files=without-match"
 #git用vim输入提交日志
 export GIT_EDITOR=vim
 #生成core文件
