@@ -43,6 +43,31 @@ ve()
     find . -name *.log |xargs echo |xargs tail -f | grep error -i
 }
 
+px()
+{
+    python tools/parse_table.py . $1 default
+}
+
+pm()
+{
+    python ./tools/autocode/mission/parse_mission.py $(pwd) $1 default
+}
+
+buildTags()
+{
+    #自动生成本目录下面的ctag和cscope信息表
+    rm -fr .tags
+    mkdir .tags
+    cd .tags
+    ctags -R  --c++-kinds=+p  --fields=+iaS --extra=+q -o ./tags ../
+    cd ..
+    find . -name "*.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.decl" > ./.tags/cscope.files
+    cscope -bkq -i ./.tags/cscope.files
+    mv cscope.in.out  ./.tags/
+    mv cscope.out ./.tags/
+    mv cscope.po.out ./.tags/
+}
+
 #不要搜索.svn目录和tags文件
 export GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.tags --exclude-dir=\.git --exclude=core.* --exclude=*.o --exclude=*.a --exclude=*.b  --binary-files=without-match"
 #git用vim输入提交日志
