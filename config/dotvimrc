@@ -6,7 +6,8 @@
 set encoding=utf-8
 set fenc=utf-8 
 set fencs=utf-8,usc-bom,gbk,gb2312,cp936 
-"
+" 设置运行shell命令时自动--login, 根据当前环境bashrc初始化一下
+set shell=/bin/bash\ -l
 " " 不要使用vi的键盘模式，而是vim自己的 
 set nocompatible 
 "
@@ -22,7 +23,7 @@ set foldlevelstart=99       " 打开文件是默认不折叠代码
 "
 "
 "   设置行号
-" set nu
+set nu
 "
 " " history文件中需要记录的行数 
 set history=100 
@@ -125,7 +126,7 @@ set novisualbell
 "
 " " 我的状态行显示的内容（包括文件类型和解码） 
 let Tlist_Process_File_Always = 1
-set statusline=%F%m%r%h%w\[POS=%l,%v][%p%%]\%{Tlist_Get_Tagname_By_Line()}
+set statusline=%F%m%r%h%w\[%p%%]\%{Tlist_Get_Tagname_By_Line()}
 " set statusline=%F%m%r%h%w\[POS=%l,%v][%p%%]\%{strftime(\"%d/%m/%y\ -\%H:%M\")} 
 "
 " " 总是显示状态行 
@@ -298,10 +299,10 @@ nmap <C-f> :vimgrep /searchword/g **/*.[ch]
 func! BuildAndUpdateTags()
     exec "!buildTags"
     exec "cs reset"
-    exec "cs add ./.tags/cscope.out"
+    "exec "cs add ./.tags/cscope.out"
 endfunc
 map <C-c> :call BuildAndUpdateTags()<CR>
-
+map <C-m> :!make build<CR>
 " 映射全选+复制 ctrl+a
 "map <C-A> ggVGY
 "map! <C-A> <Esc>ggVGY
