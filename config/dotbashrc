@@ -32,15 +32,15 @@ vlog()
 {
     if [ $# -eq 0 ]
     then
-        find . -name *.log |xargs echo |xargs tail -f
+        find . -name "*.log" |xargs echo |xargs tail -f
     else
-        find . -name "*$1*".log |xargs echo |xargs tail -f
+        find . -name "*$1*.log" |xargs echo |xargs tail -f
     fi
 }
 
 ve()
 {
-    find . -name *.log |xargs echo |xargs tail -f | grep error -i
+    find . -name "*.log" |xargs echo |xargs tail -f | grep error -i
 }
 
 px()
