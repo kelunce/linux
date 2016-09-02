@@ -302,7 +302,7 @@ func! BuildAndUpdateTags()
     "exec "cs add ./.tags/cscope.out"
 endfunc
 map <C-c> :call BuildAndUpdateTags()<CR>
-map <C-m> :!make build<CR>
+map <C-b> :!make build<CR>
 " 映射全选+复制 ctrl+a
 "map <C-A> ggVGY
 "map! <C-A> <Esc>ggVGY
