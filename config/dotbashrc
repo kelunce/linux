@@ -45,7 +45,7 @@ ve()
 
 px()
 {
-    python tools/parse_table.py . $1 default
+    python tools/parse_table.py . $1 default userd-anker-257-1
 }
 
 pm()
@@ -62,7 +62,7 @@ buildTags()
     ctags -R  --c++-kinds=+p  --fields=+iaS --extra=+q -o ./tags ../
     cd ..
     find . -name "*.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.decl" > ./.tags/cscope.files
-    cscope -bkq -i ./.tags/cscope.files
+    cscope -Rbkqc -i ./.tags/cscope.files
     mv cscope.in.out  ./.tags/
     mv cscope.out ./.tags/
     mv cscope.po.out ./.tags/
@@ -93,6 +93,7 @@ git config --global alias.di difftool
 git config --global alias.mt mergetool
 git config --global alias.gr '!git fetch && git pull --rebase origin '
 git config --global alias.pr '!git push origin '
+git config --global alias.sb show-branch
 source /etc/bash_completion.d/git
 #
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
