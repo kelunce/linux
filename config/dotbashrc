@@ -6,8 +6,20 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific aliases and functions
+#不要搜索.svn目录和tags文件
+export GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.tags --exclude-dir=\.git --exclude=core.* --exclude=*.o --exclude=*.a --exclude=*.b  --binary-files=without-match"
+#git用vim输入提交日志
+export GIT_EDITOR=vim
+#生成core文件
+ulimit -c unlimited
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64:/usr/local/lib
+
+# 不定制本地库
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64:/usr/local/lib
+
+# 不要ssh-askpass
+#unset SSH_ASKPASS
+
 
 alias egrep='egrep --color=auto -n'
 
@@ -68,15 +80,8 @@ buildTags()
     mv cscope.po.out ./.tags/
 }
 
-#不要搜索.svn目录和tags文件
-export GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.tags --exclude-dir=\.git --exclude=core.* --exclude=*.o --exclude=*.a --exclude=*.b  --binary-files=without-match"
-#git用vim输入提交日志
-export GIT_EDITOR=vim
-#生成core文件
-ulimit -c unlimited
 
-#! /bin/sh -
-#git config --global alias.st 'status'
+git config --global core.editor vim
 git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.ci commit
