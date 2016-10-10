@@ -221,6 +221,11 @@ let g:tagspath=finddir(".tags/", ";$HOME")
 " 这里不能使用set, set只能设置常量, 无法计算变量!, 这里用.表示字符串加法
 let &tags=tagspath."tags"
 let csoutpath=tagspath."cscope.out"
+if isdirectory(tagspath)
+    "自动把目录重置到.tags同级
+    exec "cd ".tagspath
+    cd ..
+endif
 "
 
 if filereadable("~/.vim/plugin/autotag.vim")
