@@ -2,10 +2,15 @@
 " 一般设定 set变量是设置现有变量的值，let是定义变量
 " vimtutor可以查看入门
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
-" " 设定默认解码 
+" " 文件显示的编码, 基本是就是系统locale中的编码
+"   如buffer，寄存器中的字符串
 set encoding=utf-8
+" 写文件时使用的编码, 也是vim认为文件本来是什么编码
 set fenc=utf-8 
-set fencs=utf-8,usc-bom,gbk,gb2312,cp936 
+" 打开文件是检测编码的顺序
+set fencs=utf-8,chinese,usc-bom,gbk,gb2312,cp936 
+"lang messages zh_CN.UTF-8
+
 " 设置运行shell命令时自动--login, 根据当前环境bashrc初始化一下
 set shell=/bin/bash\ -l
 " " 不要使用vi的键盘模式，而是vim自己的 
@@ -208,9 +213,14 @@ let Tlist_File_Fold_Auto_Close = 1
 " " 显示函数原型，因为Mudos的函数名称中有宏
 "let Tlist_Display_Prototype = 1
 "
-"   设置tags使用ctags -R后生成的tags文件目录
-set tags=.tags/tags
-"set autochdir 
+" 设置tags使用ctags -R后生成的tags文件目录
+" set autochdir 不需要自动改变工作目录,不习惯啊
+" 先向上找到.tags目录,搜索路径规则参考:help file-searching
+let g:tagspath=finddir(".tags/", ";$HOME") 
+":echo finddir('.tags/', ';$HOME') 
+" 这里不能使用set, set只能设置常量, 无法计算变量!, 这里用.表示字符串加法
+let &tags=tagspath."tags"
+let csoutpath=tagspath."cscope.out"
 "
 
 if filereadable("~/.vim/plugin/autotag.vim")
@@ -240,25 +250,28 @@ endif
 
 if has("cscope") && filereadable("/usr/bin/cscope")
    " CTRL + \  s查找 
-   nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>f :cs find f <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>i :cs find i <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>s :lcs find s <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>g :lcs find g <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>c :lcs find c <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>t :lcs find t <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>e :lcs find e <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>f :lcs find f <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>i :lcs find i <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>d :lcs find d <C-R>=expand("<cword>")<CR><CR>
 
    set csprg=/usr/bin/cscope
+   " ctags查找顺序，0表示先cscope数据库再标签文件，1表示先标签文件
    set csto=0
+   " 同时搜索tag文件和cscope数据库
    set cst
    set nocsverb
    " add any database in current directory
    if filereadable("cscope.out")
       cs add cscope.out
    " else add database pointed to by environment
-   elseif filereadable("./.tags/cscope.out")
-       cs add ./.tags/cscope.out 
+   elseif filereadable(csoutpath)
+       "cs add csoutpath 这里不能使用变量,只能如下形式
+       exec "cs add ".csoutpath
    elseif $CSCOPE_DB != ""
       cs add $CSCOPE_DB
    endif
@@ -297,12 +310,14 @@ nmap <C-f> :vimgrep /searchword/g **/*.[ch]
 "nmap <leader>w :w!<cr>
 "nmap <leader>f :find<cr>
 func! BuildAndUpdateTags()
-    exec "!buildTags"
+    " 传递路径出去,shell需要在这个路径(.tags)的上一层重建tags
+    exec "!buildTags " g:tagspath
     exec "cs reset"
     "exec "cs add ./.tags/cscope.out"
 endfunc
 map <C-c> :call BuildAndUpdateTags()<CR>
 map <C-b> :!make build<CR>
+
 " 映射全选+复制 ctrl+a
 "map <C-A> ggVGY
 "map! <C-A> <Esc>ggVGY
