@@ -226,7 +226,24 @@ if isdirectory(tagspath)
     exec "cd ".tagspath
     cd ..
 endif
-"
+" 使用Ctrl + f 启动ag,查找c和h文件
+nmap <C-f> :Ag <C-R>=expand("<cword>")<CR><CR>
+" ag In the quickfix window, you can use:
+"e    to open file and close the quickfix window
+"o    to open (same as enter)
+"go   to preview file (open but maintain focus on ag.vim results)
+"t    to open in new tab
+"T    to open in new tab silently
+"h    to open in horizontal split
+"H    to open in horizontal split silently
+"v    to open in vertical split
+"gv   to open in vertical split silently
+"q    to close the quickfix window
+
+"let mapleader="\\" 
+"nmap <leader>] :cn<CR><CR>
+"nmap <leader>[ :cp<CR><CR>
+"nmap <leader>c :ccl<CR><CR>
 
 if filereadable("~/.vim/plugin/autotag.vim")
     source ~/.vim/plugin/autotag.vim
@@ -251,7 +268,6 @@ if has("autocmd")
         autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
     augroup END
 endif
-
 
 if has("cscope") && filereadable("/usr/bin/cscope")
    " CTRL + \  s查找 
@@ -283,7 +299,6 @@ if has("cscope") && filereadable("/usr/bin/cscope")
    set csverb
 endif
 
-
 "--omnicppcomplete setting --
 "按下F3自动补全代码，注意该映射语句后不能有其他字符，包括tab；否则按下F3会自动补全一些乱码
 "imap <F3> <C-X><C-O>
@@ -309,13 +324,12 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 inoremap <C-s> :w<CR>
-" 使用Ctrl + f 启动vimgrep,查找c和h文件
-nmap <C-f> :vimgrep /searchword/g **/*.[ch]
+
 " 普通状态下,这里未定义leader键,默认是\
 "nmap <leader>w :w!<cr>
 "nmap <leader>f :find<cr>
 func! BuildAndUpdateTags()
-    " 传递路径出去,shell需要在这个路径(.tags)的上一层重建tags
+    " 传递路径出去
     exec "!buildTags " g:tagspath
     exec "cs reset"
     "exec "cs add ./.tags/cscope.out"
