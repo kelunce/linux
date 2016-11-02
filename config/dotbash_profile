@@ -12,27 +12,48 @@ fi
 # 改用tmux
 #tmux
 
-#! /bin/sh -
-git config --global alias.st 'status'
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.ci commit
-git config --global alias.st status
-git config --global alias.last 'cat-file commit HEAD'
-git config --global alias.unstage 'reset HEAD -- '
-git config --global alias.discard 'checkout -- '
-git config --global diff.tool vimdiff
-git config --global merge.tool vimdiff
-git config --global difftool.prompt false
-git config --global mergetool.prompt false
-git config --global alias.di difftool
-git config --global alias.mt mergetool
 
-PATH=$PATH:$HOME/soft/bin
-export PATH
+#export PATH=$HOME/soft/git-2.8.3:$PATH:$HOME/soft/bin
+#export MANPATH=$HOME/soft/git-man-2.8.3:$MANPATH
+export PATH=$HOME/soft/bin:$PATH
+
+
 #系统
 #export  PS1='\[\e[32m\][\u@\h \w]$\[\e[m\]'
 #export PS1='[$(whoami)@$(hostname):$(pwd)]\n>'
 #定制命令提示行
 #export  PS1='[$(whoami)@$(ifconfig eth0 | grep "inet\b"|cut -d ":" -f 2|cut -d " " -f 1):$(pwd)]\n>'
-export  PS1='\[\033[38;5;11m\][$(ifconfig eth0 | grep "inet\b"|cut -d ":" -f 2|cut -d " " -f 1)@$(pwd)]\n\[\e[m\]\[\033[38;5;2m\]$\[\e[m\]'
+# 取当前路径所在分支
+function git_branch {
+    # q选项可以使得在detach状态下命令不报错，只是返回空
+    ref=$(git symbolic-ref HEAD -q 2> /dev/null)
+    # 上一个指令报错了说明当前目录不是git项目，return
+    # 目前发现detached状态退出码是1,而如果不在git管理目录返回码128
+    errno=$?
+    if [ $errno -eq 1 ] ; then
+        echo "(Be careful with the current branch, it's detached!)";
+        return ;
+    elif [ $errno -ne 0 ] ; then
+        return ;
+    fi
+    echo "(on ${ref#refs/heads/} branch)";
+}
+
+# 取当前分支有多少时间没有更新了
+function git_since_last_commit {
+    now=`date +%s`;
+    last_commit=$(git log --pretty=format:%at -1 2> /dev/null) || return;
+    seconds_since_last_commit=$((now-last_commit));
+    minutes_since_last_commit=$((seconds_since_last_commit/60));
+    hours_since_last_commit=$((minutes_since_last_commit/60));
+    minutes_since_last_commit=$((minutes_since_last_commit%60));
+    echo "${hours_since_last_commit}h${minutes_since_last_commit}m ";
+}
+
+function get_cur_ip {
+    #(ifconfig eth0 | grep "inet\b"|cut -d ":" -f 2|cut -d " " -f 1)
+    echo "$(hostname -I | xargs)";
+}
+
+# 在$符号前增加转移符号后，之后的shell命令才会实时更新！
+export PS1="\[\033[38;5;11m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;40m\]\$(get_cur_ip)\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;9m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;184m\]\$(git_branch)\n\[$(tput sgr0)\]\[\033[38;5;2m\]>\[$(tput sgr0)\]"

@@ -84,6 +84,10 @@ export GIT_EDITOR=vim
 #生成core文件
 ulimit -c unlimited
 
+git config --global color.ui auto
+git config --global color.diff auto
+git config --global color.status auto
+git config --global color.branch auto
 git config --global core.editor vim
 git config --global alias.co checkout
 git config --global alias.br branch
