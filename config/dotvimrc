@@ -221,6 +221,7 @@ let g:tagspath=finddir(".tags/", ";$HOME")
 " 这里不能使用set, set只能设置常量, 无法计算变量!, 这里用.表示字符串加法
 let &tags=tagspath."tags"
 let csoutpath=tagspath."cscope.out"
+
 if isdirectory(tagspath)
     "自动把目录重置到.tags同级
     exec "cd ".tagspath
@@ -228,6 +229,9 @@ if isdirectory(tagspath)
 endif
 " 使用Ctrl + f 启动ag,查找c和h文件
 nmap <C-f> :Ag <C-R>=expand("<cword>")<CR><CR>
+" 关闭其他buffer
+nmap <C-o> :on<CR><CR>
+
 " ag In the quickfix window, you can use:
 "e    to open file and close the quickfix window
 "o    to open (same as enter)
