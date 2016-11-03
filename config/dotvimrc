@@ -229,9 +229,9 @@ if isdirectory(tagspath)
 endif
 " 使用Ctrl + f 启动ag,查找c和h文件
 nmap <C-f> :Ag <C-R>=expand("<cword>")<CR><CR>
+
 " 关闭其他buffer,相对于最大化本窗口了
-" 发现Ctrl+M有问题，enter键也触发了
-nmap <C-o> :on<CR><CR>
+nmap <C-i> :on<CR>
 
 " ag In the quickfix window, you can use:
 "e    to open file and close the quickfix window
@@ -245,7 +245,6 @@ nmap <C-o> :on<CR><CR>
 "gv   to open in vertical split silently
 "q    to close the quickfix window
 
-"let mapleader="\\" 
 "nmap <leader>] :cn<CR><CR>
 "nmap <leader>[ :cp<CR><CR>
 "nmap <leader>c :ccl<CR><CR>
