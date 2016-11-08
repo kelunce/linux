@@ -52,7 +52,7 @@ px()
 
 pm()
 {
-    python ./tools/autocode/mission/parse_mission.py $(pwd) $1 default
+    python ./tools/autocode/mission/parse_mission.py $(pwd) $1  default userd-anker-257-1
 }
 
 buildTags()
@@ -84,9 +84,12 @@ export GIT_EDITOR=vim
 #生成core文件
 ulimit -c unlimited
 
+#ANSI 256 color chart
+git config --global color.status.branch "blue normal bold"
+git config --global color.status.changed 208
+git config --global color.status.untracked magenta
 git config --global color.ui auto
 git config --global color.diff auto
-git config --global color.status auto
 git config --global color.branch auto
 git config --global core.editor vim
 git config --global alias.co checkout
