@@ -184,15 +184,19 @@ set term=screen-256color
 set ttymouse=xterm2
 " 粘贴格式
 "set paste
-" 使用F3清除CtrlP插件缓存
+" 使用F3清除CtrlP插件缓存,silent表示本命令执行不回显在状态栏
+nmap <silent> <F3> :CtrlPClearAllCaches<CR><CR>
+" 设置搜索文件个数和深度
 let g:ctrlp_max_files=0 
 let g:ctrlp_max_depth=40
+" 使用已经打开的buffer，如果有
+let g:ctrlp_switch_buffer='Et'
 "
  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 " " CTags的设定 
  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "在普通模式下F9都打开Tlist
-nmap <F9> :Tlist<CR>
+nmap <silent> <F9> :Tlist<CR>
 "在插入模式下先ESC返回普通模式F9再i返回插入模式
 imap <F9> <Esc><F9>i
 " " 按照名称排序name ,可以按照声明顺序order
@@ -234,7 +238,7 @@ endif
 nmap <C-f> :Ag <C-R>=expand("<cword>")<CR><CR>
 
 " 关闭其他buffer,相对于最大化本窗口了
-nmap <C-i> :on<CR>
+nmap <silent> <C-i> :on<CR>
 
 " ag In the quickfix window, you can use:
 "e    to open file and close the quickfix window
