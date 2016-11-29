@@ -119,7 +119,9 @@ set matchtime=20
 " set nohlsearch 
 "
 " " 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索） 
-set incsearch 
+set incsearch
+" Enter键顺便起到清除高亮效果
+nnoremap <silent><CR> :noh<CR><CR>
 
 " " 光标移动到buffer的顶部和底部时保持3行距离 
 "set scrolloff=3
@@ -131,6 +133,8 @@ set novisualbell
 "
 " " 我的状态行显示的内容（包括文件类型和解码） 
 set statusline=%F%m%r%h%w\[%p%%]\%{Tlist_Get_Tagname_By_Line()}
+hi StatusLine term=bold,reverse cterm=bold,reverse ctermfg=236 ctermbg=186
+"hi Normal ctermbg=gray
 " set statusline=%F%m%r%h%w\[POS=%l,%v][%p%%]\%{strftime(\"%d/%m/%y\ -\%H:%M\")} 
 "
 " " 总是显示状态行 
@@ -172,14 +176,23 @@ set smarttab
 "set listchars=tab:>-,trail:.,extends:>,precedes:<,eol:$ 
 "set listchars=tab:>-,trail:.
 "
-" " 语法高亮 
-syntax on 
+
 "
 " 使用256色
 set t_Co=256
 " 使用颜色方案
-colorscheme darkburn 
+"colorscheme darkburn 
 set term=screen-256color
+" " 语法高亮 
+syntax on
+" 强制使用LPC语法高亮
+let g:force_lpc=0
+func! ForceLpcSyntax()
+    set syntax=lpc
+    " 仅仅set syntax是不够的，打开新文件时又会检测文件类型！于是用autocmd
+    let g:force_lpc=1
+endfunc
+map <silent> <F10> :call ForceLpcSyntax()<CR>
 " 防止screen中不能使用鼠标拖动
 set ttymouse=xterm2
 " 粘贴格式
@@ -264,6 +277,15 @@ endif
 if has("autocmd")
     autocmd BufWritePost *.c :TlistUpdate
     autocmd BufWritePost *.cpp :TlistUpdate
+    " 是否强制LPC高亮
+    autocmd BufRead,BufNewFile *.c
+            \ if g:force_lpc > 0 |
+            \    exe "set syntax=lpc" |
+            \ endif
+    " 目前lpc都在logic目录下
+    autocmd BufRead,BufNewFile */logic/*.c
+            \ exe "set syntax=lpc"
+
     augroup redhat
         autocmd!
         " In text files, always limit the width of text to 78 characters
@@ -274,9 +296,9 @@ if has("autocmd")
                     \   exe "normal! g'\"" |
                     \ endif
         " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
-        autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
+        "autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
         " start with spec file template
-        autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
+        "autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
     augroup END
 endif
 
