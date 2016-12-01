@@ -275,15 +275,14 @@ endif
 "
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
-    autocmd BufWritePost *.c :TlistUpdate
-    autocmd BufWritePost *.cpp :TlistUpdate
+    autocmd BufWritePost *.c,*.cpp :TlistUpdate
     " 是否强制LPC高亮
-    autocmd BufRead,BufNewFile *.c
+    autocmd BufRead,BufNewFile *.c,*.h
             \ if g:force_lpc > 0 |
             \    exe "set syntax=lpc" |
             \ endif
     " 目前lpc都在logic目录下
-    autocmd BufRead,BufNewFile */logic/*.c
+    autocmd BufRead,BufNewFile */logic/*.c,*/logic/*.h
             \ exe "set syntax=lpc"
 
     augroup redhat
