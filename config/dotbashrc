@@ -55,6 +55,11 @@ pm()
     python ./tools/autocode/mission/parse_mission.py $(pwd) $1  default userd-anker-257-1
 }
 
+pbm()
+{
+    python ./tools/autocode/mission/parse_brief_mission.py  $(pwd) $1  default userd-anker-257-1
+}
+
 buildTags()
 {
     #自动生成本目录下面的ctag和cscope信息表
@@ -110,6 +115,7 @@ git config --global alias.gr '!git fetch && git pull --rebase origin '
 git config --global alias.pr '!git push origin '
 git config --global alias.sb show-branch
 git config --global alias.sm submodule
+git config --global core.commentChar '|'
 source /etc/bash_completion.d/git
 #
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then

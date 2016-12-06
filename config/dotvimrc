@@ -123,6 +123,8 @@ set incsearch
 " Enter键顺便起到清除高亮效果
 nnoremap <silent><CR> :noh<CR><CR>
 hi Search ctermbg=208 ctermfg=0
+" 选择文本时背景色
+hi Visual ctermbg=240
 " " 光标移动到buffer的顶部和底部时保持3行距离 
 "set scrolloff=3
 " 一次滚动9行CTRL+U and CTRL+D
