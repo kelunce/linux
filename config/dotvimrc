@@ -255,6 +255,47 @@ nmap <C-f> :Ag <C-R>=expand("<cword>")<CR><CR>
 " 关闭其他buffer,相对于最大化本窗口了
 nmap <silent> <C-i> :on<CR>
 
+"<CR>             : 回车
+"<ESC>            : Esc
+"<LEADER>         : 转义符号 \\
+"<BAR>            : 管道符号 |
+nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+
+function! HightLightCurrentWord()
+    let l:cursorChar = getline('.')[col('.')-1]
+    let l:word = expand('<cword>')
+    if strlen(word) == 0 
+        return
+    " 如果当前鼠标只停在字母时高亮
+    elseif strlen(substitute(cursorChar, "[a-zA-Z]", '', 'g')) == 0
+        let @/ = '\V\<'.escape(word, '\').'\>'
+    elseif cursorChar == '_' && strlen(substitute(word,'\<\h\w*\>','','g')) == 0
+        let @/ = '\V\<'.escape(word, '\').'\>'
+    endif
+endfunction
+
+function! AutoHighlightToggle()
+    let @/ = ''
+    if exists('#auto_highlight')
+        au! auto_highlight
+        augroup! auto_highlight
+        setl updatetime=4000
+        echo 'Highlight current word: off'
+        return 0
+    else
+        augroup auto_highlight
+            " 删除当前组里_所有_的自动命令
+            au!
+            " 当鼠标停留updatetime毫秒,设置Search registers变量(/)
+            au CursorHold * call HightLightCurrentWord()
+        augroup end
+        setl updatetime=100
+        echo 'Highlight current word: ON'
+        return 1
+    endif
+endfunction
+
+
 " ag In the quickfix window, you can use:
 "e    to open file and close the quickfix window
 "o    to open (same as enter)
