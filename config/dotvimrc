@@ -37,7 +37,7 @@ set history=100
 set confirm 
 "
 " " 与windows共享剪贴板 
-set clipboard+=unnamed 
+"set clipboard=unnamed,unnamedplus
 "
 " " 侦测文件类型 
 filetype on 
@@ -252,7 +252,7 @@ endif
 " 使用Ctrl + f 启动ag,查找c和h文件
 nmap <C-f> :Ag <C-R>=expand("<cword>")<CR><CR>
 
-" 关闭其他buffer,相对于最大化本窗口了
+" 隐藏其他buffer,相对于最大化本窗口了
 nmap <silent> <C-i> :on<CR>
 
 "<CR>             : 回车
@@ -280,7 +280,7 @@ function! AutoHighlightToggle()
         au! auto_highlight
         augroup! auto_highlight
         setl updatetime=4000
-        echo 'Highlight current word: off'
+        "echo 'Highlight current word: off'
         return 0
     else
         augroup auto_highlight
@@ -290,7 +290,7 @@ function! AutoHighlightToggle()
             au CursorHold * call HightLightCurrentWord()
         augroup end
         setl updatetime=100
-        echo 'Highlight current word: ON'
+        "echo 'Highlight current word: ON'
         return 1
     endif
 endfunction
@@ -344,16 +344,17 @@ if has("autocmd")
     augroup END
 endif
 
+
 if has("cscope") && filereadable("/usr/bin/cscope")
    " CTRL + \  s查找 
-   nmap <C-_>s :lcs find s <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>g :lcs find g <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>c :lcs find c <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>t :lcs find t <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>e :lcs find e <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>f :lcs find f <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>i :lcs find i <C-R>=expand("<cword>")<CR><CR>
-   nmap <C-_>d :lcs find d <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>f :cs find f <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>i :cs find i <C-R>=expand("<cword>")<CR><CR>
+   nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
    set csprg=/usr/bin/cscope
    " ctags查找顺序，0表示先cscope数据库再标签文件，1表示先标签文件
@@ -407,17 +408,43 @@ func! BuildAndUpdateTags()
     " 传递路径出去
     exec "!buildTags " g:tagspath
     exec "cs reset"
-    "exec "cs add ./.tags/cscope.out"
 endfunc
 map <C-c> :call BuildAndUpdateTags()<CR>
 map <C-b> :!make build<CR>
 
+" 选择模式下，选中后，Ctrl + C把选中的内容写到文件
+" 之后可以在其它vim进程中Ctrl + K粘贴
+let g:copy_buffer_file_path = "~/.vimbuffer"
+function! Save_Visual_Selection()
+    " 获取选中状态的行列坐标
+    let [lnum1, col1] = getpos("'<")[1:2]
+    let [lnum2, col2] = getpos("'>")[1:2]
+    let lines = getline(lnum1, lnum2)
+    let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][col1 - 1:]
+    "let tmpfile = tempname()
+    silent call writefile(lines, expand(g:copy_buffer_file_path))
+endfunction
+
+function! Paste_buffer_from_file()
+    " 不直接使用read命令，原因它会在当前鼠标下一行开始粘贴
+    " 这里模拟正常vim操作
+    silent exec ":new ".expand(g:copy_buffer_file_path)
+    silent normal ggvG$y
+    silent exec ":bw!"
+    " In normal mode, type p to paste after the cursor, or P to paste before the cursor
+    silent normal P
+endfunction
+
+vmap <silent><C-c> :call Save_Visual_Selection()<CR>
+"vmap <C-c> :'<,'>w! ~/.vimbuffer<CR> -->这个方式太不精确，单位是行
+" Ctrl + V 把内容粘贴到当前位置
+map <C-k> :call Paste_buffer_from_file()<CR>
+imap <C-k> <Esc><C-k>i
+
 " 映射全选+复制 ctrl+a
-"map <C-A> ggVGY
+map <C-a> ggvG$
 "map! <C-A> <Esc>ggVGY
-"map <F12> gg=G
-" 选中状态下 Ctrl+c 复制
-"vmap <C-c> "+y
 "去空行  
 "nnoremap <F2> :g/^\s*$/d<CR> 
 "比较文件  
