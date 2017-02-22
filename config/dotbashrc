@@ -46,8 +46,11 @@ ff()
 
 make()
 {
-    # 解决管道重定向导致输出混乱,禁用全缓冲，使用行缓冲
-    stdbuf --output=L --error=L /usr/bin/make "$@" 2>&1 | grep -E --color=always '\berror:|\bwarning:|$'
+    # 解决管道重定向导致输出混乱
+    # 方案1：禁用全缓冲，使用行缓冲,这个方法对tee等重定制缓冲方式的程序无效
+    #stdbuf --output=L --error=L /usr/bin/make "$@" 2>&1 | grep -E --color=always '\berror:|\bwarning:|$'
+    # 方案2: script启动shell来执行命令，它是line buffering
+    script -q -c "/usr/bin/make $@ 2>&1 " /dev/null | grep -E --color=always '\berror:|\bwarning:|$'
 }
 
 vlog()
