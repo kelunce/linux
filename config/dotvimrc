@@ -255,6 +255,11 @@ let g:ctrlp_switch_buffer='Et'
 "这里设置ctrlp工作目录从vim的工作目录开始，否则可能以最近.git作为工作目录
 let g:ctrlp_working_path_mode = 'wra'
 
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+
 " 使用Ctrl + f 启动ag,查找c和h文件
 nmap <C-f> :Ag <C-R>=expand("<cword>")<CR><CR>
 
