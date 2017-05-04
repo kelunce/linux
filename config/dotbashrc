@@ -31,6 +31,25 @@ disable_proxy()
     unset ftp_proxy
 }
 
+upload()
+{
+    file=`pwd`/$1
+    sftp -oIdentityFile=/home/anker/.ssh/lenovo-rsa-key.pri -oPort=22 anker@192.168.16.108 <<EOF
+put $file
+bye
+EOF
+}
+
+download()
+{
+    file=$1
+    sftp -oIdentityFile=/home/anker/.ssh/lenovo-rsa-key.pri -oPort=22 anker@192.168.16.108 <<EOF
+get $file
+bye
+EOF
+}
+
+
 # 如果存在vimx版本（vim-X11），重定向！默认vim没有clipboard编译选项
 #if [ -e /usr/bin/vimx ]; then alias vim='/usr/bin/vimx'; fi
 
