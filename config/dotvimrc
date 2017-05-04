@@ -199,13 +199,6 @@ map <silent> <F10> :call ForceLpcSyntax()<CR>
 set ttymouse=xterm2
 " 粘贴格式
 "set paste
-" 使用F3清除CtrlP插件缓存,silent表示本命令执行不回显在状态栏
-nmap <silent> <F3> :CtrlPClearAllCaches<CR><CR>
-" 设置搜索文件个数和深度
-let g:ctrlp_max_files=0 
-let g:ctrlp_max_depth=40
-" 使用已经打开的buffer，如果有
-let g:ctrlp_switch_buffer='Et'
 "
  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 " " CTags的设定 
@@ -249,6 +242,19 @@ if isdirectory(tagspath)
     exec "cd ".tagspath
     cd ..
 endif
+
+" 使用F3清除CtrlP插件缓存,silent表示本命令执行不回显在状态栏
+nmap <silent> <F3> :CtrlPClearAllCaches<CR><CR>
+" 设置搜索文件个数和深度
+let g:ctrlp_max_files=0 
+let g:ctrlp_max_depth=40
+" 使用已经打开的buffer，如果有
+let g:ctrlp_switch_buffer='Et'
+" 强制设置ctrl工作目录的标记
+"let g:ctrlp_root_markers=['.tags']
+"这里设置ctrlp工作目录从vim的工作目录开始，否则可能以最近.git作为工作目录
+let g:ctrlp_working_path_mode = 'wra'
+
 " 使用Ctrl + f 启动ag,查找c和h文件
 nmap <C-f> :Ag <C-R>=expand("<cword>")<CR><CR>
 
