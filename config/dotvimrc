@@ -115,8 +115,8 @@ set matchtime=20
 " " 在搜索的时候忽略大小写 
 " set ignorecase 
 "
-" " 不要高亮被搜索的句子（phrases） 
-" set nohlsearch 
+" " 高亮被搜索的句子（phrases） 
+set hlsearch 
 "
 " " 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索） 
 set incsearch
@@ -421,7 +421,7 @@ func! BuildAndUpdateTags()
     exec "cs reset"
 endfunc
 map <C-c> :call BuildAndUpdateTags()<CR>
-map <C-b> :!make build<CR>
+"map <C-b> :!make build<CR>
 
 " 选择模式下，选中后，Ctrl + C把选中的内容写到文件
 " 之后可以在其它vim进程中Ctrl + K粘贴
