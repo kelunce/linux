@@ -11,7 +11,7 @@ set fenc=utf-8
 set fencs=utf-8,chinese,usc-bom,gbk,gb2312,cp936 
 "lang messages zh_CN.UTF-8
 
-" 设置运行shell命令时自动--login, 根据当前环境bashrc初始化一下
+" 设置运行shell命令, 根据当前环境bashrc初始化一下,man bash
 set shell=/bin/bash\ -l
 " " 不要使用vi的键盘模式，而是vim自己的 
 set nocompatible 
@@ -179,12 +179,20 @@ set smarttab
 "set listchars=tab:>-,trail:.
 "
 
-"
 " 使用256色
 set t_Co=256
 " 使用颜色方案
 "colorscheme darkburn 
 set term=screen-256color
+" 如果终端不是screen-256color，将会和term不一致,转义Home,End
+if $TERM =~ 'screen-256color'
+    map <Esc>OH <Home>
+    map! <Esc>OH <Home>
+    map <Esc>OF <End>
+    map! <Esc>OF <End>
+endif
+
+"set term=xterm
 " " 语法高亮 
 syntax on
 " 强制使用LPC语法高亮
