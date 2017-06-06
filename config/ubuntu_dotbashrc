@@ -1,0 +1,311 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+alias sshhosts="grep -w -i Host ~/.ssh/config | awk  '{print $2}'"
+enable_proxy()
+{
+    addr=http://192.168.16.108:2016
+    export http_proxy=$addr
+    export https_proxy=$addr
+    export ftp_proxy=$addr
+    echo "set proxy addr:"$addr
+}
+
+disable_proxy()
+{
+    unset http_proxy
+    unset https_proxy
+    unset ftp_proxy
+}
+
+# 如果存在vimx版本（vim-X11），重定向！默认vim没有clipboard编译选项
+#if [ -e /usr/bin/vimx ]; then alias vim='/usr/bin/vimx'; fi
+
+fc()
+{
+    find . -name "*.c" -o -name "*.h" | xargs egrep --color=auto -n "$1"
+}
+
+ff()
+{
+    find . -name "*" |  egrep -i $1
+}
+
+make()
+{
+    # 解决管道重定向导致输出混乱
+    # 方案1：禁用全缓冲，使用行缓冲,这个方法对tee等重定制缓冲方式的程序无效
+    #stdbuf --output=L --error=L /usr/bin/make "$@" 2>&1 | grep -E --color=always '\berror:|\bwarning:|$'
+    # 方案2: script启动shell来执行命令，它是line buffering
+    script -q -c "/usr/bin/make $@ 2>&1 " /dev/null | grep -E --color=always '\berror:|\bwarning:|$'
+}
+
+vlog()
+{
+    if [ $# -eq 0 ]
+    then
+        find . -name "*.log" |xargs echo |xargs tail -f
+    else
+        find . -name "*$1*.log" |xargs echo |xargs tail -f
+    fi
+}
+
+ve()
+{
+    find . -name "*.log" |xargs echo |xargs tail -f | grep error -i
+}
+
+px()
+{
+    python tools/parse_table.py . $1 default userd-anker-257
+}
+
+pm()
+{
+    python ./tools/autocode/mission/parse_mission.py $(pwd) $1  default userd-anker-257
+}
+
+pbm()
+{
+    python ./tools/autocode/mission/parse_brief_mission.py  $(pwd) $1  default userd-anker-257
+}
+
+buildTags()
+{
+    #自动生成本目录下面的ctag和cscope信息表
+    # 如果传递参数则是vim中调用过来
+    if [ $# -gt 0 ] ; then
+        cd $1
+        cd ..
+    fi
+    rm -fr .tags
+    mkdir .tags
+    cd .tags
+    ctags  -R --c++-kinds=+p  --fields=+iaS --extra=+q --recurse=yes  -o ./tags ../
+    cd ..
+    # 使用pwd来获取绝对路径,使得find输出的文件路径都是绝对路径
+    find `pwd`/ -name "*.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.decl" > cscope.files
+    cscope -Rbkqc -i cscope.files
+    mv cscope.in.out  ./.tags/
+    mv cscope.out ./.tags/
+    mv cscope.po.out ./.tags/
+    mv cscope.files ./.tags/
+}
+
+upload()
+{
+  file=`pwd`/$1
+  sftp -oIdentityFile=/home/anker/.ssh/lenovo-rsa-key.pri -oPort=22 anker@192.168.16.108 <<EOF
+put $file
+bye
+EOF
+}
+
+download()
+{
+  file=$1
+  sftp -oIdentityFile=/home/anker/.ssh/lenovo-rsa-key.pri -oPort=22 anker@192.168.16.108 <<EOF
+get $file
+bye
+EOF
+}
+
+
+#export GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.tags --exclude-dir=\.git --exclude=core.* --exclude=*.o --exclude=*.a --exclude=*.b  --binary-files=without-match"
+#git用vim输入提交日志
+export GIT_EDITOR=vim
+#生成core文件
+ulimit -c unlimited
+
+git config --global core.editor vim
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.new 'ls-files --others --exclude-standard'
+git config --global alias.st 'status -uno'
+git config --global alias.last 'cat-file commit HEAD'
+git config --global alias.unstage 'reset HEAD '
+git config --global alias.discard 'checkout -- '
+git config --global diff.tool vimdiff
+git config --global merge.tool vimdiff
+git config --global difftool.prompt false
+git config --global mergetool.prompt false
+git config --global alias.di difftool
+git config --global alias.mt mergetool
+git config --global alias.gr '!git fetch && git pull --rebase origin '
+git config --global alias.pr '!git push origin '
+git config --global alias.sb show-branch
+git config --global alias.sm submodule
+git config --global core.commentChar '|'
+
+
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+LC_TIME=en_US.UTF-8
+LC_NAME=en_US.UTF-8
+LC_MEASUREMENT=en_US.UTF-8
+LC_IDENTIFICATION=en_US.UTF-8
+LANG=en_US.UTF-8
+_PAPER=en_US.UTF-8
+LC_ADDRESS=en_US.UTF-8
+LC_MONETARY=en_US.UTF-8
+LC_NUMERIC=en_US.UTF-8
+LC_TELEPHONE=en_US.UTF-8
+
+
+
+
+
+#系统
+#export  PS1='\[\e[32m\][\u@\h \w]$\[\e[m\]'
+#export PS1='[$(whoami)@$(hostname):$(pwd)]\n>'
+#定制命令提示行
+#export  PS1='[$(whoami)@$(ifconfig eth0 | grep "inet\b"|cut -d ":" -f 2|cut -d " " -f 1):$(pwd)]\n>'
+# 取当前路径所在分支
+function git_branch {
+    # q选项可以使得在detach状态下命令不报错，只是返回空
+    ref=$(git symbolic-ref HEAD -q 2> /dev/null)
+    # 上一个指令报错了说明当前目录不是git项目，return
+    # 目前发现detached状态退出码是1,而如果不在git管理目录返回码128
+    errno=$?
+    if [ $errno -eq 1 ] ; then
+        echo "(Be careful with the current branch, it's detached!)";
+        return ;
+    elif [ $errno -ne 0 ] ; then
+        return ;
+    fi
+    echo "(on ${ref#refs/heads/} branch)";
+}
+
+# 取当前分支有多少时间没有更新了
+function git_since_last_commit {
+    now=`date +%s`;
+    last_commit=$(git log --pretty=format:%at -1 2> /dev/null) || return;
+    seconds_since_last_commit=$((now-last_commit));
+    minutes_since_last_commit=$((seconds_since_last_commit/60));
+    hours_since_last_commit=$((minutes_since_last_commit/60));
+    minutes_since_last_commit=$((minutes_since_last_commit%60));
+    echo "${hours_since_last_commit}h${minutes_since_last_commit}m ";
+}
+
+function get_cur_ip {
+    #(ifconfig eth0 | grep "inet\b"|cut -d ":" -f 2|cut -d " " -f 1)
+    echo "$(hostname -I | xargs)";
+}
+
+# 在$符号前增加转移符号后，之后的shell命令才会实时更新！屏幕messing up(混乱)时，作用reset命令刷新
+export PS1="\[\033[38;5;11m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;40m\]\$(get_cur_ip)\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;9m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;184m\]\$(git_branch) \n\[$(tput sgr0)\]\[\033[38;5;2m\]>\[$(tput sgr0)\]"
