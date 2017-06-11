@@ -5,7 +5,7 @@ Host gitlab.rd.175game.com
 Host github.com
   Hostname ssh.github.com
   Port 443
-  User kelunce
+  User git
   IdentityFile ~/.ssh/github.pri
 
 Host 12.6
