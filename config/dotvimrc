@@ -185,7 +185,7 @@ set t_Co=256
 "colorscheme darkburn 
 set term=screen-256color
 " 如果终端不是screen-256color，将会和term不一致,转义Home,End
-if $TERM =~ 'screen-256color'
+if $TERM !~ '*screen*'
     map <Esc>OH <Home>
     map! <Esc>OH <Home>
     map <Esc>OF <End>
