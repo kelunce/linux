@@ -7,7 +7,8 @@ fi
 
 # User specific aliases and functions
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64:/usr/local/lib
+#是否需要包含自己的动态库根据需要
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64:/usr/local/lib
 
 alias egrep='egrep --color=auto -n'
 
@@ -15,7 +16,7 @@ alias fgrep='fgrep --color=auto'
 
 alias grep='grep --color=auto'
 
-alias sshhosts="grep -w -i Host ~/.ssh/config  | sed 's/Host//'"
+alias sshhosts="grep -w -i Host ~/.ssh/config | awk  '{print $2}'"
 
 enable_proxy()
 {
@@ -71,7 +72,12 @@ make()
     # 方案1：禁用全缓冲，使用行缓冲,这个方法对tee等重定制缓冲方式的程序无效
     #stdbuf --output=L --error=L /usr/bin/make "$@" 2>&1 | grep -E --color=always '\berror:|\bwarning:|$'
     # 方案2: script启动shell来执行命令，它是line buffering
-    script -q -c "/usr/bin/make $@ 2>&1 " /dev/null | grep -E --color=always '\berror:|\bwarning:|$'
+    if [ $# -ge 1 -a $1 == 'start' -o  $1 == 'stop' ]
+    then
+        /usr/bin/make $@
+    else
+        script -q -c "/usr/bin/make $@ 2>&1 " /dev/null | grep -E --color=always '\berror:|\bwarning:|$'
+    fi
 }
 
 vlog()
@@ -115,10 +121,10 @@ buildTags()
     rm -fr .tags
     mkdir .tags
     cd .tags
-    ctags  -R --c++-kinds=+p  --fields=+iaS --extra=+q --recurse=yes --input-encoding=utf-8  -o ./tags ../
+    ctags  -R --c++-kinds=+p  --fields=+iaS --extra=+q --recurse=yes  -o ./tags ../
     cd ..
     # 使用pwd来获取绝对路径,使得find输出的文件路径都是绝对路径
-    find `pwd` -name "*.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.decl" > cscope.files
+    find `pwd`/ -name "*.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.decl" > cscope.files
     cscope -Rbkqc -i cscope.files
     mv cscope.in.out  ./.tags/
     mv cscope.out ./.tags/
