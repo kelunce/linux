@@ -38,8 +38,8 @@ upload()
 {
     #从.netrc配置ftp密码
     tarfile=${1}.temp.`date +%Y-%M-%d-%H-%m-%S`.tar.gz
-    upfile=${1}.tar.gz
-    tar -zcf $tarfile  $1
+    upfile=${1}.x
+    tar -zcf $tarfile $1
     read -s -p 'Enter encrypt key:' key
     openssl aes-128-cbc -salt -k $key -in $tarfile -out $upfile 
     printf '\ngoing to upload %s \n' $upfile
@@ -60,7 +60,7 @@ EOF
 download()
 {
     #从.netrc配置ftp密码
-    rfile=${1}.tar.gz
+    rfile=${1}.x
     ftp -pv lcm.space<<EOF
 cd upload
 get $rfile
@@ -80,6 +80,14 @@ EOF
 #EOF
 }
 
+kvmlist () 
+{ 
+    ftp -pv lcm.space<<EOF
+cd upload
+ls
+bye
+EOF
+}
 
 # 如果存在vimx版本（vim-X11），重定向！默认vim没有clipboard编译选项
 #if [ -e /usr/bin/vimx ]; then alias vim='/usr/bin/vimx'; fi
