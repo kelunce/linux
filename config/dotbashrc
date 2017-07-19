@@ -69,7 +69,7 @@ EOF
     read -s -p 'Enter encrypt key:' key
     printf '\ngoing to decrypt file:%s \n' $rfile
     tfile=${1}.`date +%Y-%M-%d-%H-%m-%S`.tar.gz
-    openssl aes-128-cbc -d -salt -k $key -in $upfile -out $tfile
+    openssl aes-128-cbc -d -salt -k $key -in $rfile -out $tfile
     tar -zxf $tfile
     rm -fr $rfile
     rm -fr $tfile
