@@ -36,20 +36,48 @@ disable_proxy()
 
 upload()
 {
-    file=`pwd`/$1
-    sftp -oIdentityFile=/home/anker/.ssh/lenovo-rsa-key.pri -oPort=22 anker@192.168.16.108 <<EOF
-put $file
+    #从.netrc配置ftp密码
+    tarfile=${1}.temp.`date +%Y-%M-%d-%H-%m-%S`.tar.gz
+    upfile=${1}.tar.gz
+    tar -zcf $tarfile  $1
+    read -s -p 'Enter encrypt key:' key
+    openssl aes-128-cbc -salt -k $key -in $tarfile -out $upfile 
+    printf '\ngoing to upload %s \n' $upfile
+    ftp -pv lcm.space<<EOF
+cd upload
+put $upfile
 bye
 EOF
+    rm -f $tarfile
+    rm -f $upfile
+#   file=`pwd`/$1
+#   ftp -oIdentityFile=/home/anker/.ssh/lenovo-rsa-key.pri -oPort=22 anker@192.168.16.108 <<EOF
+#put $file
+#bye
+#EOF
 }
 
 download()
 {
-    file=$1
-    sftp -oIdentityFile=/home/anker/.ssh/lenovo-rsa-key.pri -oPort=22 anker@192.168.16.108 <<EOF
-get $file
+    #从.netrc配置ftp密码
+    rfile=${1}.tar.gz
+    ftp -pv lcm.space<<EOF
+cd upload
+get $rfile
 bye
 EOF
+    read -s -p 'Enter encrypt key:' key
+    printf '\ngoing to decrypt file:%s \n' $rfile
+    tfile=${1}.`date +%Y-%M-%d-%H-%m-%S`.tar.gz
+    openssl aes-128-cbc -d -salt -k $key -in $upfile -out $tfile
+    tar -zxf $tfile
+    rm -fr $rfile
+    rm -fr $tfile
+#    file=$1
+#    sftp -oIdentityFile=/home/anker/.ssh/lenovo-rsa-key.pri -oPort=22 anker@192.168.16.108 <<EOF
+#get $file
+#bye
+#EOF
 }
 
 
