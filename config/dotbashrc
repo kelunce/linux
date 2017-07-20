@@ -14,7 +14,10 @@ alias egrep='egrep --color=auto -n'
 
 alias fgrep='fgrep --color=auto'
 
-alias grep='grep --color=auto'
+#不要搜索.svn目录和tags文件
+options="--color=auto  --exclude-dir=\.svn --exclude-dir=\.tags --exclude-dir=\.git --exclude=core.* --exclude=*.o --exclude=*.a --exclude=*.b  --binary-files=without-match"
+alias grep="grep $options"
+unset options
 
 alias sshhosts="grep -w -i Host ~/.ssh/config | awk  '{print $2}'"
 
