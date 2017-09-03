@@ -220,22 +220,32 @@ let g:netrw_browse_split = 4
 let g:netrw_winsize = 20
 " 左边窗口
 let g:netrw_altv = 1
-let g:is_opening_tree = 0 
-let g:last_bufnr = bufnr('%')
-func! OpenDirTree()
-    if g:is_opening_tree > 0
-        exe ':bd' . g:is_opening_tree
-        let g:is_opening_tree = 0
+" 开关netrw
+func! ToggleNetrw()
+    let idx = 1
+    let find_netrw = 0
+    while idx <= bufnr("$")
+        "if buflisted(idx)
+        "netrw打开的buffer是不在listed中的(ls中看不到的),字符串相等==#,数值相等判定==
+            if getbufvar(idx, '&filetype') ==# "netrw"
+                let find_netrw = idx
+                break
+            endif
+        "endif
+        let idx += 1
+    endwhile
+    " 如果已经检测到有打开，关闭
+    if find_netrw > 0
+        exe ':bd' . find_netrw 
         return
     endif
 
     exec "Vexp"
-    " 记录当前buffer idx
-    let g:is_opening_tree = bufnr('%')
     " ctrl w + p 回到原来buffer
     exec "wincmd p"
 endfunc
-map <silent> <C-T> :call OpenDirTree()<CR> 
+
+map <silent> <C-T> :call ToggleNetrw()<CR> 
 "augroup ProjectDrawer
 "      autocmd!
 "      autocmd VimEnter * :Vexplore
