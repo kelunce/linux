@@ -140,7 +140,8 @@ make()
     then
         /usr/bin/make $@
     else
-        script -q -c "/usr/bin/make $@ 2>&1 " /dev/null | grep -E --color=always '\berror:|\bwarning:|$'
+        stdbuf --output=L --error=L /usr/bin/make "$@" 2>&1 | grep -E --color=always '\berror:|\bwarning:|$'
+        #script -q -c "/usr/bin/make $@ 2>&1 " /dev/null | grep -E --color=always '\berror:|\bwarning:|$'
     fi
 }
 
@@ -196,8 +197,6 @@ buildTags()
     mv cscope.files ./.tags/
 }
 
-#不要搜索.svn目录和tags文件
-export GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.tags --exclude-dir=\.git --exclude=core.* --exclude=*.o --exclude=*.a --exclude=*.b  --binary-files=without-match"
 #git用vim输入提交日志
 export GIT_EDITOR=vim
 #生成core文件
@@ -230,6 +229,11 @@ git config --global alias.pr '!git push origin '
 git config --global alias.sb show-branch
 git config --global alias.sm submodule
 git config --global core.commentChar '|'
+git config --global alias.ls 'log --graph'
+#git config --global format.pretty oneline
+git config --global format.pretty format:"%C(auto,yellow)%h%x09%C(auto,magenta)%an%x09%C(auto,green)%ai%x09%C(auto,white)%s"
+
+
 source /etc/bash_completion.d/git
 #
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then

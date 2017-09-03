@@ -220,6 +220,22 @@ let g:netrw_browse_split = 4
 let g:netrw_winsize = 20
 " 左边窗口
 let g:netrw_altv = 1
+let g:is_opening_tree = 0 
+let g:last_bufnr = bufnr('%')
+func! OpenDirTree()
+    if g:is_opening_tree > 0
+        exe ':bd' . g:is_opening_tree
+        let g:is_opening_tree = 0
+        return
+    endif
+
+    exec "Vexp"
+    " 记录当前buffer idx
+    let g:is_opening_tree = bufnr('%')
+    " ctrl w + p 回到原来buffer
+    exec "wincmd p"
+endfunc
+map <silent> <C-T> :call OpenDirTree()<CR> 
 "augroup ProjectDrawer
 "      autocmd!
 "      autocmd VimEnter * :Vexplore
@@ -507,6 +523,8 @@ func! CompileRunGcc()
         exec "!python %<"
     elseif &filetype == 'sh'
         exec "!sh ./%<"
+    elseif &filetype == 'lua'
+        exec "cgete system('lua '.shellescape(expand('%')))"
     endif
 endfunc
 "C,C++的调试
