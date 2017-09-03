@@ -284,7 +284,7 @@ if isdirectory(tagspath)
 endif
 
 " 使用F3清除CtrlP插件缓存,silent表示本命令执行不回显在状态栏
-nmap <silent> <F3> :CtrlPClearAllCaches<CR><CR>
+nmap <silent><C-u><C-u> :CtrlPClearAllCaches<CR><CR>
 " 设置搜索文件个数和深度
 let g:ctrlp_max_files=0 
 let g:ctrlp_max_depth=40
