@@ -190,7 +190,8 @@ buildTags()
     cd ..
     # 使用pwd来获取绝对路径,使得find输出的文件路径都是绝对路径
     find `pwd`/ -name "*.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.decl" -o -name "*.lua" -o -name "*.cs" | awk '{print "\""$0"\""}'  > cscope.files
-    cscope -Rbkqc -i cscope.files
+    #cscope -Rbkqc -i cscope.files
+    cscope -bkqvl -i cscope.files 
     mv cscope.in.out  ./.tags/
     mv cscope.out ./.tags/
     mv cscope.po.out ./.tags/
