@@ -233,6 +233,10 @@ git config --global core.commentChar '|'
 git config --global alias.ls 'log --graph'
 #git config --global format.pretty oneline
 git config --global format.pretty format:"%C(auto,yellow)%h%x09%C(auto,magenta)%an%x09%C(auto,green)%ai%x09%C(auto,white)%s"
+# 查看分支修改
+git config --global alias.bm '!git di HEAD `git merge-base HEAD develop`'
+# 查看分支提交记录
+git config --global alias.bc '!git log develop..HEAD --stat'
 
 
 source /etc/bash_completion.d/git
