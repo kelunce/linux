@@ -32,7 +32,9 @@ if !exists("g:ag_prg")
     let g:ag_prg="ag --vimgrep"
   else
     " --noheading seems odd here, but see https://github.com/ggreer/the_silver_searcher/issues/361
-    let g:ag_prg="ag --column --nogroup --noheading"
+    "let g:ag_prg="ag --column --nogroup --noheading --nobreak"
+    " by lcm
+    let g:ag_prg="ag --vimgrep"
   endif
 endif
 
